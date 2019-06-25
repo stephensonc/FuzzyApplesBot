@@ -22,8 +22,13 @@ async def on_message(message):
 
     if message.content.startswith("!"):#if the text should be parsed for a command
 
+        #Help Command
+        if message.content.lower() == "!help":
+            await channel.send('Command list: \n--------------\n'
+             + '!AngeryKC - Responds with an angery King Crimson')
+
             #King Crimson command
-        if message.content.lower() == "!angerykc":
+        elif message.content.lower() == "!angerykc":
             rand = random.randint(0,1)
             if rand == 0:
                 rand = random.randint(0, num_jpg)
@@ -35,6 +40,9 @@ async def on_message(message):
                 await channel.send(file=discord.File('./resources/KingCrimsonPNG/' + file_to_send))
                 #End of King Crimson Command
 
+        else {
+            await channel.send('Invalid command. Type "!help" for a list of commands')
+        }
 
 
 
