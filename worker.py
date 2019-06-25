@@ -17,6 +17,7 @@ async def on_message(message):
 
     if message.content.startswith("!"):
         if message.content.lower() == "!angerykc":
-            await client.send_message(message.channel, "ZA WARUDO")
+            #await client.send_message(message.channel, "ZA WARUDO")
+            await channel.send(file=discord.File('resources/KingCrimson0.jpg'))
 
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
