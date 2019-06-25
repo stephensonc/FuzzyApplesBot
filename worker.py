@@ -11,8 +11,8 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-num_jpg = 1
-num_png = 1
+num_jpg = 4
+num_png = 5
 
 @client.event
 async def on_message(message):
