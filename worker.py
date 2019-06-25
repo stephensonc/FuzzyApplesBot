@@ -29,7 +29,7 @@ async def on_message(message):
                 rand = random.randint(0, num_jpg)
                 file_to_send = 'KingCrimson' + str(rand) + '.jpg'
                 await channel.send(file=discord.File('./resources/KingCrimson/' + file_to_send))
-            if rand == 1:
+            elif rand == 1:
                 rand = random.randint(0, num_png)
                 file_to_send = 'KingCrimson' + str(rand) + '.png'
                 await channel.send(file=discord.File('./resources/KingCrimsonPNG/' + file_to_send))
