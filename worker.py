@@ -14,8 +14,8 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-        
-    if message.content.startsWith("!"):
+
+    if message.content.startswith("!"):
         if message.content.lower() == "!angerykc":
             await client.send_message(message.channel, "ZA WARUDO")
 
