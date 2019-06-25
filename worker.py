@@ -20,7 +20,7 @@ async def on_message(message):
 
     if message.content.startswith("!"):
         if message.content.lower() == "!angerykc":
-            rand = random.randint(0, 2)
+            rand = random.randint(0, 1)
             file_to_send = 'KingCrimson' + str(rand) + '.jpg'
             await channel.send(file=discord.File('./resources/KingCrimson/' + file_to_send))
 
