@@ -14,5 +14,5 @@ async def on_ready():
 async def on_message(message):
     if message.content.lower() == "!angerykc":
         await client.send_message(message.channel, "ZA WARUDO")
-        
-client.run(NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8)
+
+client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
