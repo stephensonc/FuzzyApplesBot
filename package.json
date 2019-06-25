@@ -1,0 +1,8 @@
+{
+"name": "kaeiros-675",
+"version": "1.0.0",
+"description": "Meme-bot 9000",
+"main": "bot.js",
+"author": "kaeiros",
+"dependencies": {}
+}
