@@ -19,7 +19,7 @@ num_png = 5
 async def on_message(message):
     channel = message.channel
     if message.author == client.user:
-        return
+        return;
 
     if message.content.startswith("!"):#if the text should be parsed for a command
 

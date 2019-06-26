@@ -6,7 +6,7 @@ import random
 async def sendHelp(channel):
     await channel.send('Command list: \n------------------\n'
      + '!AngeryKC - Responds with an angery King Crimson')
-     return;
+    return;
 
 async def sendKC(channel):
     rand = random.randint(0,1)
