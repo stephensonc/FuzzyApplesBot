@@ -10,7 +10,7 @@ async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
-    await client.change_presence(game=discord.Game(name='with fire'))
+    await client.status = 'Erasing time'
     print('------')
 
 
