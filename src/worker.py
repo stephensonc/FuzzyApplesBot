@@ -11,7 +11,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     game = discord.Game("with time")
-    await client.change_presence(status = discord.Status.idle, activity = game)
+    await client.change_presence(status = discord.Status.online, activity = game)
     print('------')
 
 
