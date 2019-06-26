@@ -1,7 +1,7 @@
 import discord
 import asyncio
 import random
-import worker
+
 
 
 
