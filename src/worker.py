@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import random
+import commands
 
 client = discord.Client()
 
@@ -24,6 +25,7 @@ async def on_message(message):
 
         #Help Command
         if message.content.lower() == "!help":
+            commands.sendHelp(channel)
             await channel.send('Command list: \n------------------\n'
              + '!AngeryKC - Responds with an angery King Crimson')
 
