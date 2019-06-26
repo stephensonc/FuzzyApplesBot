@@ -24,7 +24,7 @@ async def on_message(message):
 
         #Help Command
         if message.content.lower() == "!help":
-            await channel.send('Command list: \n--------------\n'
+            await channel.send('Command list: \n------------------\n'
              + '!AngeryKC - Responds with an angery King Crimson')
 
             #King Crimson command
