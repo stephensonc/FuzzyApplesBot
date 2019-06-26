@@ -2,9 +2,15 @@ import discord
 import asyncio
 import random
 
+file = open('../HelpMessage.txt', 'read')
+
+
 async def sendHelp(channel):
-    await channel.send('Command list: \n------------------\n'
-     + '!AngeryKC - Responds with an angery King Crimson')
+    if file.mode == 'read'
+    fileContents = file.read()
+    await channel.send(fileContents)
+    #await channel.send('Command list: \n------------------\n'
+     #+ '!AngeryKC - Responds with an angery King Crimson')
     return;
 
 num_jpg = 4
