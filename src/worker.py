@@ -34,5 +34,4 @@ async def on_message(message):
             await channel.send('Invalid command. Type "!help" for a list of commands')
 
 
-
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
