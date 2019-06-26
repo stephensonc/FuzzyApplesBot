@@ -26,22 +26,12 @@ async def on_message(message):
         #Help Command
         if message.content.lower() == "!help":
             await commands.sendHelp(channel)
-            await channel.send('Command list: \n------------------\n'
-             + '!AngeryKC - Responds with an angery King Crimson')
 
-            #King Crimson command
+        #King Crimson command
         elif message.content.lower() == "!angerykc":
-            rand = random.randint(0,1)
-            if rand == 0:
-                rand = random.randint(0, num_jpg)
-                file_to_send = 'KingCrimson' + str(rand) + '.jpg'
-                await channel.send(file=discord.File('./resources/KingCrimson/' + file_to_send))
-            elif rand == 1:
-                rand = random.randint(0, num_png)
-                file_to_send = 'KingCrimson' + str(rand) + '.png'
-                await channel.send(file=discord.File('./resources/KingCrimsonPNG/' + file_to_send))
-                #End of King Crimson Command
+            await commands.sendKC(channel)
 
+                
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
 
