@@ -1,12 +1,17 @@
 import discord
 import asyncio
 import random
+import worker
+
 
 
 async def sendHelp(channel):
     await channel.send('Command list: \n------------------\n'
      + '!AngeryKC - Responds with an angery King Crimson')
     return;
+
+num_jpg = 4
+num_png = 5
 
 async def sendKC(channel):
     rand = random.randint(0,1)

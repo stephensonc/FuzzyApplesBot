@@ -12,8 +12,6 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-num_jpg = 4
-num_png = 5
 
 @client.event
 async def on_message(message):
@@ -31,7 +29,7 @@ async def on_message(message):
         elif message.content.lower() == "!angerykc":
             await commands.sendKC(channel)
 
-                
+
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
 
