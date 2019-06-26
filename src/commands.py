@@ -6,7 +6,6 @@ file = open('../HelpMessage.txt', "r")
 
 
 async def sendHelp(channel):
-    if file.mode == "r"
     fileContents = file.read()
     await channel.send(fileContents)
     #await channel.send('Command list: \n------------------\n'
