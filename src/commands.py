@@ -26,3 +26,11 @@ async def sendKC(channel):
         file_to_send = 'KingCrimson' + str(rand) + '.png'
         await channel.send(file=discord.File('./resources/KingCrimsonPNG/' + file_to_send))
     return;
+
+#Number of thinking gifs
+num_thunk = 8
+#Sends a thinking gif
+async def sendThunk(channel):
+    rand = random.randint(0, num_thunk)
+    await channel.send(file=discord.File('./resources/hmm/'+str(rand)+'.gif' ))
+    return;

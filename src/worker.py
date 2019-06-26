@@ -28,6 +28,8 @@ async def on_message(message):
         elif message.content.lower() == "!angerykc":
             await commands.sendKC(channel)
 
+        elif message.content.lower().find("hmm") > -1:
+            await commands.sendThunk(channel)
 
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
