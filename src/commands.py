@@ -2,9 +2,6 @@ import discord
 import asyncio
 import random
 
-
-
-
 async def sendHelp(channel):
     await channel.send('Command list: \n------------------\n'
      + '!AngeryKC - Responds with an angery King Crimson')
