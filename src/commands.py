@@ -4,7 +4,6 @@ import random
 
 file = open("HelpMessage.txt", "r")
 
-
 async def sendHelp(channel):
     fileContents = file.read()
     await channel.send(fileContents)
