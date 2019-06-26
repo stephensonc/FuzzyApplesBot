@@ -40,9 +40,8 @@ async def on_message(message):
                 await channel.send(file=discord.File('./resources/KingCrimsonPNG/' + file_to_send))
                 #End of King Crimson Command
 
-        else {
+        else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
-        }
 
 
 
