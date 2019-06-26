@@ -2,11 +2,11 @@ import discord
 import asyncio
 import random
 
-file = open('../HelpMessage.txt', 'r')
+file = open('../HelpMessage.txt', "r")
 
 
 async def sendHelp(channel):
-    if file.mode == 'r'
+    if file.mode == "r"
     fileContents = file.read()
     await channel.send(fileContents)
     #await channel.send('Command list: \n------------------\n'
