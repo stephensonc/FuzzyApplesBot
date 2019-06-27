@@ -30,7 +30,7 @@ async def on_message(message):
         print("This is the power of my King Crimson")
         await commands.eraseTime(message)
         standAbilityActivated = False
-        await channel.send(file=discord.File('./resources/EraseTime.png'))
+        await channel.send(file=discord.File('./resources/ErasingTime.png'))
 
     #if the text should be parsed for a command
     if message.content.startswith("!"):
