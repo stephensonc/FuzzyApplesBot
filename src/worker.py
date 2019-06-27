@@ -6,7 +6,7 @@ import commands
 client = discord.Client()
 
 standAbilityActivated = False
-channelToParse
+channelToParse = 'Not defined'
 
 @client.event
 async def on_ready():
