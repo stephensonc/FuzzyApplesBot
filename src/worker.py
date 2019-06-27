@@ -20,6 +20,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global standAbilityActivated
     channel = message.channel
     if message.author == client.user:
         return;
@@ -28,7 +29,7 @@ async def on_message(message):
     if standAbilityActivated:
         print("This is the power of my King Crimson")
         await commands.eraseTime(message)
-        await standAbilityActivated = False
+        standAbilityActivated = False
         await channel.send(file=discord.File('./resources/EraseTime.png'))
 
     #if the text should be parsed for a command
@@ -45,7 +46,7 @@ async def on_message(message):
         #Erase time command
         elif message.content.lower().find("erase") > -1:
             await commands.eraseTime(message)
-            await standAbilityActivated = True
+            standAbilityActivated = True
 
         #Invalid message
         else:
