@@ -27,6 +27,13 @@ async def on_message(message):
     if message.author == client.user:
         return;
 
+    #Effectively King Crimson's power
+    if standAbilityActivated and channelToParse == channel:
+        print("This is the power of my King Crimson")
+        await commands.eraseTime(message)
+        standAbilityActivated = False
+        #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
+        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
 
     #if the text should be parsed for a command
     if message.content.startswith("!"):
@@ -44,18 +51,10 @@ async def on_message(message):
             channelToParse = channel
             await commands.eraseTime(message)
             standAbilityActivated = True
+
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
-            
-    #Effectively King Crimson's power
-    if standAbilityActivated and channelToParse == channel:
-        print("This is the power of my King Crimson")
-        await commands.eraseTime(message)
-        standAbilityActivated = False
-        #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
-        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
-
     return;
 
 
