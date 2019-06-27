@@ -51,8 +51,8 @@ async def eraseTime(command, channel):
     print("Erasing command comment")
     await command.delete()
     print("Erased successfully")
-
-    @worker.client.event
+    client = worker.client
+    @client.event
     async def on_message(message1):
         await message1.delete()
         await channel.send(file=discord.File('./resources/EraseTime.png'))
