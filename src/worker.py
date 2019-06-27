@@ -29,7 +29,8 @@ async def on_message(message):
         return;
 
     #Effectively King Crimson's power
-    if message.content.lower().find('za warudo'):
+    if message.content.lower().find('disarm'):
+        print("disarming stand")
         standAbilityActivated = False
     if standAbilityActivated and channelToParse == channel:
         print("Erased " + message.content)
