@@ -6,6 +6,7 @@ import commands
 client = discord.Client()
 
 standAbilityActivated = False
+channelToParse
 
 @client.event
 async def on_ready():
@@ -21,12 +22,13 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global standAbilityActivated
+    global channelToParse
     channel = message.channel
     if message.author == client.user:
         return;
         #
     #Effectively King Crimson's power
-    if standAbilityActivated:
+    if standAbilityActivated && channelToParse == channel:
         print("This is the power of my King Crimson")
         await commands.eraseTime(message)
         standAbilityActivated = False
@@ -46,6 +48,7 @@ async def on_message(message):
             await commands.sendThunk(channel)
         #Erase time command
         elif message.content.lower().find("erase") > -1:
+            channelToParse = channel
             await commands.eraseTime(message)
             standAbilityActivated = True
 
