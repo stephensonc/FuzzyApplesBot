@@ -8,6 +8,7 @@ client = discord.Client()
 standAbilityActivated = False
 channelToParse = 'Not defined'
 
+
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -28,13 +29,15 @@ async def on_message(message):
         return;
 
     #Effectively King Crimson's power
+    if message.content.lower().find('za warudo'):
+        standAbilityActivated = False
     if standAbilityActivated and channelToParse == channel:
-        print("This is the power of my King Crimson")
+        print("Erased " + message.content)
         await commands.eraseTime(message)
         standAbilityActivated = False
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
-
+        print("Ability successfuly used")
     #if the text should be parsed for a command
     if message.content.startswith("!"):
         #Help Command
@@ -49,6 +52,7 @@ async def on_message(message):
         #Erase time command
         elif message.content.lower().find("erase") > -1:
             channelToParse = channel
+            print("Monitoring " + channel.name)
             await commands.eraseTime(message)
             standAbilityActivated = True
 
