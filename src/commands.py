@@ -1,9 +1,9 @@
 import discord
 import asyncio
 import random
-import worker
 
 file = open("HelpMessage.txt", "r")
+client = discord.Client()
 
 #Outputs the current list of commands
 async def sendHelp(channel):
@@ -52,7 +52,6 @@ async def eraseTime(command, channel):
     print("Erasing command comment")
     await command.delete()
     print("Erased successfully")
-    client = worker.client
     @client.event
     async def on_message(message1):
         await message1.delete()
