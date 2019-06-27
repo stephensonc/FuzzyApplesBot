@@ -29,10 +29,13 @@ async def on_message(message):
         #King Crimson command
         elif message.content.lower().find("angerykc") > -1:
             await commands.sendKC(channel)
-
+        #Hmm command
         elif message.content.lower().find("hmm") > -1:
             await commands.sendThunk(channel)
-
+        #Erase time command
+        elif message.content.lower().find("erase") > -1:
+            await commands.eraseTime(message, channel)
+        #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
 

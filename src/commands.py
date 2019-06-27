@@ -45,3 +45,15 @@ async def sendThunk(channel):
     await channel.send(file=discord.File('./resources/hmm/'+ file_to_send))
     print("Sent successfully")
     return;
+
+
+async def eraseTime(command, channel):
+    print("Erasing command comment")
+    await command.delete()
+    print("Erased successfully")
+
+    @client.event
+    async def on_message(message1):
+        await message1.delete()
+        await channel.send(file=discord.File('./resources/EraseTime.png'))
+    return;
