@@ -4,7 +4,6 @@ import random
 
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
-standAbilityActivated = False
 
 #Outputs the current list of commands
 async def sendHelp(channel):
@@ -48,21 +47,8 @@ async def sendThunk(channel):
     print("Sent successfully")
     return;
 
-@client.event
-async def on_message(message1):
-    if(standAbilityActivated):
-
-        print("Erasing next message")
-        if message1.author == client.user:
-            return;
-            await message1.delete()
-            await channel.send(file=discord.File('./resources/EraseTime.png'))
-        standAbilityActivated = False
-    return;
-
-async def eraseTime(command, channel):
-    print("Erasing command comment")
+async def eraseTime(message):
+    print("Erasing message")
     await command.delete()
     print("Erased successfully")
-    standAbilityActivated = True
     return;

@@ -4,6 +4,7 @@ import random
 import commands
 
 client = discord.Client()
+standAbilityActivated = False
 
 @client.event
 async def on_ready():
@@ -20,13 +21,20 @@ async def on_message(message):
     channel = message.channel
     if message.author == client.user:
         return;
+        #
+    #Effectively King Crimson's power
+    if standAbilityActivated:
+        print("This is the power of my King Crimson")
+        await commands.eraseTime(message)
+        standAbilityActivated = False
+        await channel.send(file=discord.File('./resources/EraseTime.png'))
 
-    if message.content.startswith("!"):#if the text should be parsed for a command
+    #if the text should be parsed for a command
+    if message.content.startswith("!"):
         #Help Command
         if message.content.lower().find("help") > -1:
             await commands.sendHelp(channel)
-
-        #King Crimson command
+        #Angery face command
         elif message.content.lower().find("angerykc") > -1:
             await commands.sendKC(channel)
         #Hmm command
@@ -34,9 +42,12 @@ async def on_message(message):
             await commands.sendThunk(channel)
         #Erase time command
         elif message.content.lower().find("erase") > -1:
-            await commands.eraseTime(message, channel)
+            await commands.eraseTime(message)
+            standAbilityActivated = True
+
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
+
 
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
