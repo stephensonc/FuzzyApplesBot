@@ -23,11 +23,11 @@ async def on_message(message):
 
     if message.content.startswith("!"):#if the text should be parsed for a command
         #Help Command
-        if message.content.lower() == "!help":
+        if message.content.lower().find("help") > -1:
             await commands.sendHelp(channel)
 
         #King Crimson command
-        elif message.content.lower() == "!angerykc":
+        elif message.content.lower().find("angerykc") > -1:
             await commands.sendKC(channel)
 
         elif message.content.lower().find("hmm") > -1:
