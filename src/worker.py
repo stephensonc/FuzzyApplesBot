@@ -32,7 +32,7 @@ async def on_message(message):
         print("This is the power of my King Crimson")
         await commands.eraseTime(message)
         standAbilityActivated = False
-        await channel.send('I erased the time in which you sent your message and leapt past it.')
+        await channel.send('I erased the time in which '+ message.author.name +' sent their message and leapt past it.')
         await channel.send(file=discord.File('./resources/ErasingTime.png'))
 
     #if the text should be parsed for a command
