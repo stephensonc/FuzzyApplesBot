@@ -4,7 +4,7 @@ import random
 import commands
 
 client = discord.Client()
-standAbilityActivated = False
+
 
 @client.event
 async def on_ready():
@@ -12,6 +12,7 @@ async def on_ready():
     print(client.user.name)
     #print(client.user.id)
     game = discord.Game("with time")
+    standAbilityActivated = False
     await client.change_presence(status = discord.Status.online, activity = game)
     print('------')
 
