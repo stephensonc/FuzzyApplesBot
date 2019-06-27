@@ -25,6 +25,7 @@ async def on_message(message):
     global standAbilityActivated
     global channelToParse
     channel = message.channel
+
     if message.author == client.user:
         return;
 
@@ -40,6 +41,8 @@ async def on_message(message):
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
         print("Ability successfuly used")
+    elif message.content.lower().find('disarm') >-1 and channelToParse == channel:
+        print("Disarmed successfully")
     #if the text should be parsed for a command
     if message.content.startswith("!"):
         #Help Command
