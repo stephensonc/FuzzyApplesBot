@@ -35,7 +35,6 @@ async def on_message(message):
         standAbilityActivated = False
 
     if standAbilityActivated and channelToParse == channel:
-        print("Erased \"" + message.content+"\"")
         await commands.eraseTime(message)
         standAbilityActivated = False
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
