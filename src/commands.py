@@ -49,6 +49,6 @@ async def sendThunk(channel):
 
 async def eraseTime(message):
     print("Erasing message")
-    await command.delete()
+    await message.delete()
     print("Erased successfully")
     return;
