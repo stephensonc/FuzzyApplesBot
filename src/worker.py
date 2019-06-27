@@ -28,7 +28,7 @@ async def on_message(message):
         return;
         #
     #Effectively King Crimson's power
-    if standAbilityActivated && channelToParse == channel:
+    if standAbilityActivated and channelToParse == channel:
         print("This is the power of my King Crimson")
         await commands.eraseTime(message)
         standAbilityActivated = False
