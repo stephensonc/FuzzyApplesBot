@@ -23,11 +23,13 @@ async def sendKC(channel):
     if rand == 0:
         rand = random.randint(0, num_jpg)
         file_to_send = 'KingCrimson' + str(rand) + '.jpg'
+        print("Sending " + file_to_send)
         await channel.send(file=discord.File('./resources/KingCrimson/' + file_to_send))
         print("Sent successfully")
     elif rand == 1:
         rand = random.randint(0, num_png)
         file_to_send = 'KingCrimson' + str(rand) + '.png'
+        print("Sending " + file_to_send)
         await channel.send(file=discord.File('./resources/KingCrimsonPNG/' + file_to_send))
         print("Sent successfully")
     return;
@@ -38,6 +40,8 @@ num_thunk = 8
 async def sendThunk(channel):
     print("Command received")
     rand = random.randint(0, num_thunk)
-    await channel.send(file=discord.File('./resources/hmm/'+str(rand)+'.gif' ))
+    file_to_send = str(rand)+'.gif'
+    print("Sending " + file_to_send)
+    await channel.send(file=discord.File('./resources/hmm/'+ file_to_send))
     print("Sent successfully")
     return;
