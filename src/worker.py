@@ -31,14 +31,14 @@ async def on_message(message):
 
     #Effectively King Crimson's power
     if message.content.lower().find('disarm') >-1:
-        print("disarming stand")
+        print("Disarming stand")
         standAbilityActivated = False
 
     if standAbilityActivated and channelToParse == channel:
         await commands.eraseTime(message)
         standAbilityActivated = False
-        #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
-        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
+        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
+        #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
         print("Ability successfuly used")
     elif message.content.lower().find('disarm') >-1 and channelToParse == channel:
         print("Disarmed successfully")
