@@ -54,6 +54,7 @@ async def eraseTime(command, channel):
     print("Erased successfully")
     @client.event
     async def on_message(message1):
+        print("Erasing next message")
         if message1.author == client.user:
             return;
         await message1.delete()
