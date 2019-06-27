@@ -28,7 +28,7 @@ async def on_message(message):
     if standAbilityActivated:
         print("This is the power of my King Crimson")
         await commands.eraseTime(message)
-        toggleStand()
+        await toggleStand()
         await channel.send(file=discord.File('./resources/EraseTime.png'))
 
     #if the text should be parsed for a command
@@ -45,18 +45,18 @@ async def on_message(message):
         #Erase time command
         elif message.content.lower().find("erase") > -1:
             await commands.eraseTime(message)
-            toggleStand()
+            await toggleStand()
 
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
     return;
 
-def toggleStand():
+async def toggleStand():
     if standAbilityActivated:
-        standAbilityActivated = False
+        await standAbilityActivated = False
     else:
-        standAbilityActivated = True
+        await standAbilityActivated = True
     return;
 
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
