@@ -5,7 +5,7 @@ import commands
 
 client = discord.Client()
 
-global standAbilityActivated = False
+standAbilityActivated = False
 
 @client.event
 async def on_ready():
@@ -28,7 +28,7 @@ async def on_message(message):
     if standAbilityActivated:
         print("This is the power of my King Crimson")
         await commands.eraseTime(message)
-        standAbilityActivated = False
+        global standAbilityActivated = False
         await channel.send(file=discord.File('./resources/EraseTime.png'))
 
     #if the text should be parsed for a command
@@ -45,7 +45,7 @@ async def on_message(message):
         #Erase time command
         elif message.content.lower().find("erase") > -1:
             await commands.eraseTime(message)
-            standAbilityActivated = True
+            global standAbilityActivated = True
 
         #Invalid message
         else:
