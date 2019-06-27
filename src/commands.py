@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import random
+import worker
 
 file = open("HelpMessage.txt", "r")
 
