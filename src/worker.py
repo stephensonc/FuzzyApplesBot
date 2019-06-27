@@ -29,11 +29,12 @@ async def on_message(message):
         return;
 
     #Effectively King Crimson's power
-    if message.content.lower().find('disarm'):
+    if message.content.lower().find('disarm') >-1:
         print("disarming stand")
         standAbilityActivated = False
+
     if standAbilityActivated and channelToParse == channel:
-        print("Erased " + message.content)
+        print("Erased \"" + message.content+"\"")
         await commands.eraseTime(message)
         standAbilityActivated = False
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
