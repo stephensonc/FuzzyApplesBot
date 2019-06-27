@@ -54,6 +54,8 @@ async def eraseTime(command, channel):
     print("Erased successfully")
     @client.event
     async def on_message(message1):
+        if message1.author == client.user:
+            return;
         await message1.delete()
         await channel.send(file=discord.File('./resources/EraseTime.png'))
     return;
