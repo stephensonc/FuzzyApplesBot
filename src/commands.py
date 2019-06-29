@@ -59,7 +59,7 @@ async def eraseTime(message):
         print("Ability successfuly used")
     return;
 
-def deleteMessage(message):
+async def deleteMessage(message):
     print("Erasing \"" + message.content+"\"")
     await message.delete()
     print("Erased successfully")
