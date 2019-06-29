@@ -23,7 +23,7 @@ async def on_message(message):
         return;
 
     #Effectively King Crimson's power
-    await eraseTime(message)
+    await commands.eraseTime(message)
 
     #if the text should be parsed for a command
     if content.startswith("!"):
