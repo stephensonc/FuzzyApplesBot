@@ -3,7 +3,7 @@ import asyncio
 import random
 import commands
 client = discord.Client()
-monitoredChannels = []
+
 
 @client.event
 async def on_ready():
@@ -16,7 +16,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    global monitoredChannels
     content = message.content.lower()
     channel = message.channel
 
@@ -24,7 +23,7 @@ async def on_message(message):
         return;
 
     #Effectively King Crimson's power
-    await crimsonCheck(message)
+    await eraseTime(message)
 
     #if the text should be parsed for a command
     if content.startswith("!"):
@@ -39,28 +38,14 @@ async def on_message(message):
             await commands.sendThunk(channel)
         #Erase time command
         elif 'erase' in content:
-            monitoredChannels.append(channel)
+            commands.monitoredChannels.append(channel)
             print("Monitoring " + channel.name)
-            await commands.eraseTime(message)
+            print("Erasing \"" + message.content+"\"")
+            await message.delete()
+            print("Erased successfully")
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
-    return;
-
-async def crimsonCheck(message):
-    global monitoredChannels
-    channel = message.channel
-    monitored = True if channel in monitoredChannels else False
-
-    if 'disarm' in message.content.lower() and monitored == True:
-        monitoredChannels.remove(channel)
-        print("Disarmed "+ channel.name +" successfully")
-    elif monitored == True:
-        await commands.eraseTime(message)
-        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
-        await channel.send('...but if you must know, ' + message.author.name + ' said: \"' + message.content + '\"' )
-        monitoredChannels.remove(channel)
-        print("Ability successfuly used")
     return;
 
 def printMonitored():

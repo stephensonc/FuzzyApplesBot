@@ -6,6 +6,7 @@ from os import listdir
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
 resources = "./resources/"
+monitoredChannels = []
 
 #Outputs the current list of commands
 async def sendHelp(channel):
@@ -43,7 +44,17 @@ async def sendThunk(channel):
     return;
 
 async def eraseTime(message):
-    print("Erasing \"" + message.content+"\"")
-    await message.delete()
-    print("Erased successfully")
+    global monitoredChannels
+    channel = message.channel
+    monitored = True if channel in monitoredChannels else False
+
+    if 'disarm' in message.content.lower() and monitored == True:
+        monitoredChannels.remove(channel)
+        print("Disarmed "+ channel.name +" successfully")
+    elif monitored == True:
+        await commands.eraseTime(message)
+        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
+        await channel.send('...but if you must know, ' + message.author.name + ' said: \"' + message.content + '\"' )
+        monitoredChannels.remove(channel)
+        print("Ability successfuly used")
     return;
