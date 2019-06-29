@@ -38,7 +38,7 @@ async def on_message(message):
         #Erase time command
         elif 'erase' in content:
             commands.monitorChannel(channel)
-            commands.deleteMessage(message)
+            await commands.deleteMessage(message)
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
