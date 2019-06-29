@@ -23,35 +23,34 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global monitoredChannels
-
+    content = message.content.lower()
     channel = message.channel
 
     if message.author == client.user:
         return;
 
+    #Effectively King Crimson's power
+    await crimsonCheck(message)
 
     #if the text should be parsed for a command
-    if message.content.startswith("!"):
+    if content.startswith("!"):
         #Help Command
-        if message.content.lower().find("help") > -1:
+        if 'help' in content:
             await commands.sendHelp(channel)
         #Angery face command
-        elif message.content.lower().find("angerykc") > -1:
+        elif 'angerykc' in content:
             await commands.sendKC(channel)
         #Hmm command
-        elif message.content.lower().find("hmm") > -1:
+        elif 'hmm' in content:
             await commands.sendThunk(channel)
         #Erase time command
-        elif message.content.lower().find("erase") > -1:
+        elif 'erase' in content:
             monitoredChannels.append(channel)
             print("Monitoring " + channel.name)
             await commands.eraseTime(message)
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
-    #Effectively King Crimson's power
-    await crimsonCheck(message)
-    
     return;
 
 async def crimsonCheck(message):
@@ -61,11 +60,11 @@ async def crimsonCheck(message):
     channel = message.channel
 
     monitored = isMonitored(channel)
-    if message.content.lower().find('disarm') >-1 and monitored == True:
+    if 'disarm' in message.content.lower() and monitored == True:
         monitoredChannels.remove(channel)
         print("Disarmed "+ channel.name +" successfully")
     elif monitored == True:
-        print("Starting crimson check")
+        #print("Starting crimson check")
         await commands.eraseTime(message)
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
@@ -77,9 +76,7 @@ async def crimsonCheck(message):
 
 def isMonitored(channel):
     monitored = False
-    for chnl in monitoredChannels:
-        if(chnl == channel):
-            monitored = True
+    monitored = True if channel in monitoredChannels
     return monitored;
 
 def printMonitored():
