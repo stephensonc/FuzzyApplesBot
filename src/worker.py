@@ -9,7 +9,6 @@ client = discord.Client()
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
-    #print(client.user.id)
     game = discord.Game("with time")
     await client.change_presence(status = discord.Status.online, activity = game)
     print('------')
@@ -38,11 +37,8 @@ async def on_message(message):
             await commands.sendThunk(channel)
         #Erase time command
         elif 'erase' in content:
-            commands.monitoredChannels.append(channel)
-            print("Monitoring " + channel.name)
-            print("Erasing \"" + message.content+"\"")
-            await message.delete()
-            print("Erased successfully")
+            commands.monitorChannel(channel)
+            commands.deleteMessage(message)
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
