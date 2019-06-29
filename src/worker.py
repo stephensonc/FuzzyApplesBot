@@ -5,8 +5,8 @@ import commands
 
 client = discord.Client()
 
-standAbilityActivated = False
-channelToParse = 'Not defined'
+
+monitoredChannels = []
 
 
 @client.event
@@ -22,27 +22,16 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    global standAbilityActivated
-    global channelToParse
+    global monitoredChannels
+
     channel = message.channel
 
     if message.author == client.user:
         return;
 
     #Effectively King Crimson's power
-    if message.content.lower().find('disarm') >-1:
-        print("Disarming stand")
-        standAbilityActivated = False
+    crimsonCheck(message)
 
-    if standAbilityActivated and channelToParse == channel:
-        await commands.eraseTime(message)
-        standAbilityActivated = False
-        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
-        #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
-        await channel.send('...but if you must know, ' + message.author.name + 'said \"' + message.content + '\"' )
-        print("Ability successfuly used")
-    elif message.content.lower().find('disarm') >-1 and channelToParse == channel:
-        print("Disarmed successfully")
     #if the text should be parsed for a command
     if message.content.startswith("!"):
         #Help Command
@@ -56,16 +45,41 @@ async def on_message(message):
             await commands.sendThunk(channel)
         #Erase time command
         elif message.content.lower().find("erase") > -1:
-            channelToParse = channel
+            monitoredChannels.append(channel)
             print("Monitoring " + channel.name)
             await commands.eraseTime(message)
-            standAbilityActivated = True
 
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
     return;
 
+async def crimsonCheck(message):
+    global monitoredChannels
+    channel = message.channel
+    if message.content.lower().find('disarm') >-1:
+        print("Disarming stand")
+        monitoredChannels.remove(channel)
 
+    monitored = isMonitored(channel)
+
+    if message.content.lower().find('disarm') >-1 and monitored == True:
+        monitoredChannels.remove(channel)
+        print("Disarmed "+ channel.name +" successfully")
+    elif monitored == True:
+        await commands.eraseTime(message)
+        await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
+        #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
+        await channel.send('...but if you must know, ' + message.author.name + 'said \"' + message.content + '\"' )
+        monitoredChannels.remove(channel)
+        print("Ability successfuly used")
+    return;
+
+def isMonitored(channel):
+    monitored = False
+    for chnl in monitoredChannels:
+        if(chnl == channel):
+            monitored = True
+    return monitored;
 
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
