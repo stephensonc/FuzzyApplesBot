@@ -2,12 +2,8 @@ import discord
 import asyncio
 import random
 import commands
-
 client = discord.Client()
-
-
 monitoredChannels = []
-
 
 @client.event
 async def on_ready():
@@ -15,10 +11,8 @@ async def on_ready():
     print(client.user.name)
     #print(client.user.id)
     game = discord.Game("with time")
-
     await client.change_presence(status = discord.Status.online, activity = game)
     print('------')
-
 
 @client.event
 async def on_message(message):

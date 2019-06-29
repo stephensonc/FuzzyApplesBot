@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import random
+from os import listdir
 
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
@@ -15,29 +16,22 @@ async def sendHelp(channel):
     return;
 
 #Current maximum number of jpgs and pngs in the resource folders for KC
-num_jpg = 4
-num_png = 5
+crimsonimages = listdir(resources + "KingCrimson/")
+num_png = len(crimsonimages)
 
 #Sends a random King Crimson image
 async def sendKC(channel):
     print("Command received")
-    rand = random.randint(0,1)
-    if rand == 0:
-        rand = random.randint(0, num_jpg)
-        file_to_send = 'KingCrimson' + str(rand) + '.jpg'
-        print("Sending " + file_to_send)
-        await channel.send(file=discord.File(resources + 'KingCrimson/' + file_to_send))
-        print("Sent successfully")
-    elif rand == 1:
         rand = random.randint(0, num_png)
         file_to_send = 'KingCrimson' + str(rand) + '.png'
         print("Sending " + file_to_send)
-        await channel.send(file=discord.File(resources + 'KingCrimsonPNG/' + file_to_send))
+        await channel.send(file=discord.File(resources + 'KingCrimson/' + file_to_send))
         print("Sent successfully")
     return;
 
 #Number of thinking gifs
-num_thunk = 8
+thunklist = listdir(resources + "hmm")
+num_thunk = len(thunklist)
 #Sends a thinking gif
 async def sendThunk(channel):
     print("Command received")
