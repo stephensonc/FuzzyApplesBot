@@ -22,11 +22,11 @@ num_png = len(crimsonimages)
 #Sends a random King Crimson image
 async def sendKC(channel):
     print("Command received")
-        rand = random.randint(0, num_png)
-        file_to_send = 'KingCrimson' + str(rand) + '.png'
-        print("Sending " + file_to_send)
-        await channel.send(file=discord.File(resources + 'KingCrimson/' + file_to_send))
-        print("Sent successfully")
+    rand = random.randint(0, num_png)
+    file_to_send = 'KingCrimson' + str(rand) + '.png'
+    print("Sending " + file_to_send)
+    await channel.send(file=discord.File(resources + 'KingCrimson/' + file_to_send))
+    print("Sent successfully")
     return;
 
 #Number of thinking gifs
