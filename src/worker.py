@@ -29,8 +29,6 @@ async def on_message(message):
     if message.author == client.user:
         return;
 
-    #Effectively King Crimson's power
-    await crimsonCheck(message)
 
     #if the text should be parsed for a command
     if message.content.startswith("!"):
@@ -51,6 +49,9 @@ async def on_message(message):
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
+    #Effectively King Crimson's power
+    await crimsonCheck(message)
+    
     return;
 
 async def crimsonCheck(message):
