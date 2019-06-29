@@ -52,7 +52,9 @@ async def eraseTime(message):
         monitoredChannels.remove(channel)
         print("Disarmed "+ channel.name +" successfully")
     elif monitored == True:
+        print("Erasing \"" + message.content+"\"")
         await message.delete()
+        print("Erased successfully")
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
         await channel.send('...but if you must know, ' + message.author.name + ' said: \"' + message.content + '\"' )
         monitoredChannels.remove(channel)
