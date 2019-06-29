@@ -70,7 +70,7 @@ async def crimsonCheck(message):
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
         await channel.send('...but if you must know, ' + message.author.name + ' said \"' + message.content + '\"' )
         monitoredChannels.remove(channel)
-        printMonitored()
+        #printMonitored() #Debug, ensures it actually removed it.
         print("Ability successfuly used")
     return;
 
@@ -83,7 +83,7 @@ def isMonitored(channel):
 
 def printMonitored():
     for chnl in monitoredChannels:
-        print(chnl.name)
+        print(chnl.name + ", ")
     return;
 
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
