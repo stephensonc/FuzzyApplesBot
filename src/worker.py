@@ -75,8 +75,7 @@ async def crimsonCheck(message):
     return;
 
 def isMonitored(channel):
-    monitored = False
-    monitored = True if channel in monitoredChannels
+    monitored = True if channel in monitoredChannels else false
     return monitored;
 
 def printMonitored():
