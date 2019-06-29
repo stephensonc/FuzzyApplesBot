@@ -48,7 +48,6 @@ async def on_message(message):
             monitoredChannels.append(channel)
             print("Monitoring " + channel.name)
             await commands.eraseTime(message)
-
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
@@ -59,9 +58,6 @@ async def crimsonCheck(message):
     global monitoredChannels
 
     channel = message.channel
-    if message.content.lower().find('disarm') >-1:
-        print("Disarming stand")
-        monitoredChannels.remove(channel)
 
     monitored = isMonitored(channel)
     if message.content.lower().find('disarm') >-1 and monitored == True:
@@ -72,8 +68,9 @@ async def crimsonCheck(message):
         await commands.eraseTime(message)
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
-        await channel.send('...but if you must know, ' + message.author.name + 'said \"' + message.content + '\"' )
+        await channel.send('...but if you must know, ' + message.author.name + ' said \"' + message.content + '\"' )
         monitoredChannels.remove(channel)
+        printMonitored()
         print("Ability successfuly used")
     return;
 
@@ -83,5 +80,10 @@ def isMonitored(channel):
         if(chnl == channel):
             monitored = True
     return monitored;
+
+def printMonitored():
+    for chnl in monitoredChannels:
+        print(chnl.name)
+    return;
 
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
