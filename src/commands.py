@@ -4,6 +4,7 @@ import random
 
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
+resources = "./resources/"
 
 #Outputs the current list of commands
 async def sendHelp(channel):
@@ -25,13 +26,13 @@ async def sendKC(channel):
         rand = random.randint(0, num_jpg)
         file_to_send = 'KingCrimson' + str(rand) + '.jpg'
         print("Sending " + file_to_send)
-        await channel.send(file=discord.File('./resources/KingCrimson/' + file_to_send))
+        await channel.send(file=discord.File(resources + 'KingCrimson/' + file_to_send))
         print("Sent successfully")
     elif rand == 1:
         rand = random.randint(0, num_png)
         file_to_send = 'KingCrimson' + str(rand) + '.png'
         print("Sending " + file_to_send)
-        await channel.send(file=discord.File('./resources/KingCrimsonPNG/' + file_to_send))
+        await channel.send(file=discord.File(resources + 'KingCrimsonPNG/' + file_to_send))
         print("Sent successfully")
     return;
 

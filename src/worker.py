@@ -54,29 +54,20 @@ async def on_message(message):
     return;
 
 async def crimsonCheck(message):
-
     global monitoredChannels
-
     channel = message.channel
+    monitored = True if channel in monitoredChannels else False
 
-    monitored = isMonitored(channel)
     if 'disarm' in message.content.lower() and monitored == True:
         monitoredChannels.remove(channel)
         print("Disarmed "+ channel.name +" successfully")
     elif monitored == True:
-        #print("Starting crimson check")
         await commands.eraseTime(message)
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
-        #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
         await channel.send('...but if you must know, ' + message.author.name + ' said: \"' + message.content + '\"' )
         monitoredChannels.remove(channel)
-        #printMonitored() #Debug, ensures it actually removed it.
         print("Ability successfuly used")
     return;
-
-def isMonitored(channel):
-    monitored = True if channel in monitoredChannels else False
-    return monitored;
 
 def printMonitored():
     for chnl in monitoredChannels:
