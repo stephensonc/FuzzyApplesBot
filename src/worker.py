@@ -30,7 +30,7 @@ async def on_message(message):
         return;
 
     #Effectively King Crimson's power
-    crimsonCheck(message)
+    await crimsonCheck(message)
 
     #if the text should be parsed for a command
     if message.content.startswith("!"):
@@ -45,7 +45,7 @@ async def on_message(message):
             await commands.sendThunk(channel)
         #Erase time command
         elif message.content.lower().find("erase") > -1:
-            monitoredChannels.append(channel)
+            await monitoredChannels.append(channel)
             print("Monitoring " + channel.name)
             await commands.eraseTime(message)
 
@@ -55,23 +55,24 @@ async def on_message(message):
     return;
 
 async def crimsonCheck(message):
+    print("Starting crimson check")
     global monitoredChannels
     channel = message.channel
     if message.content.lower().find('disarm') >-1:
         print("Disarming stand")
-        monitoredChannels.remove(channel)
+        await monitoredChannels.remove(channel)
 
     monitored = isMonitored(channel)
 
     if message.content.lower().find('disarm') >-1 and monitored == True:
-        monitoredChannels.remove(channel)
+        await monitoredChannels.remove(channel)
         print("Disarmed "+ channel.name +" successfully")
     elif monitored == True:
         await commands.eraseTime(message)
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
         await channel.send('...but if you must know, ' + message.author.name + 'said \"' + message.content + '\"' )
-        monitoredChannels.remove(channel)
+        await monitoredChannels.remove(channel)
         print("Ability successfuly used")
     return;
 
