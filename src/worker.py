@@ -68,7 +68,7 @@ async def crimsonCheck(message):
         await commands.eraseTime(message)
         await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.')
         #await channel.send('I erased the time in which '+ message.author.mention +' sent their message and leapt past it.',file=discord.File('./resources/ErasingTime.png'))
-        await channel.send('...but if you must know, ' + message.author.name + ' said \"' + message.content + '\"' )
+        await channel.send('...but if you must know, ' + message.author.name + ' said: \"' + message.content + '\"' )
         monitoredChannels.remove(channel)
         #printMonitored() #Debug, ensures it actually removed it.
         print("Ability successfuly used")
