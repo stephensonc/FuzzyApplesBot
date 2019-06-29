@@ -17,7 +17,7 @@ async def sendHelp(channel):
 
 #Current maximum number of jpgs and pngs in the resource folders for KC
 crimsonimages = listdir(resources + "KingCrimson/")
-num_png = len(crimsonimages)
+num_png = len(crimsonimages) - 1
 
 #Sends a random King Crimson image
 async def sendKC(channel):
@@ -31,7 +31,7 @@ async def sendKC(channel):
 
 #Number of thinking gifs
 thunklist = listdir(resources + "hmm")
-num_thunk = len(thunklist)
+num_thunk = len(thunklist) - 1
 #Sends a thinking gif
 async def sendThunk(channel):
     print("Command received")
