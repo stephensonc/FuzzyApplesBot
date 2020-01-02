@@ -66,8 +66,8 @@ async def deleteMessage(message):
     return;
 
 def primeAbility(message):
-    monitorChannel(message.channel)
-    await deleteMessage(message)
+    # monitorChannel(message.channel)
+    # await deleteMessage(message)
     return;
 
 def monitorChannel(channel):
