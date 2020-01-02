@@ -4,9 +4,9 @@ import random
 from os import listdir
 
 command_dict = {
-            "help": (commands.sendHelp, "- Outputs a list of bot commands"),
-            "angerykc": (commands.sendKC, "- Responds with an angery King Crimson"),
-            "hmm": (commands.sendThunk, "- Responds with a random thinking gif"),
+            "help": (sendHelp, "- Outputs a list of bot commands"),
+            "angerykc": (sendKC, "- Responds with an angery King Crimson"),
+            "hmm": (sendThunk, "- Responds with a random thinking gif"),
             #"erase": (commands.primeAbility, "- Activates King Crimson's ability")
 }
 
