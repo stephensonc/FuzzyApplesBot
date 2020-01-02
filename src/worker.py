@@ -49,5 +49,4 @@ def printMonitored():
         print(chnl.name + ", ")
     return;
 
-print("Sending client.run() command")
-client.run('NTkyODk4NDM0MzQwNzQ5MzEz.Xg1J3Q.p_bGhi38xy7Ad7cXA2qw1ON3e6w')
+client.run(process.env.TOKEN)
