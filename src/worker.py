@@ -36,9 +36,9 @@ async def on_message(message):
         elif 'hmm' in content:
             await commands.sendThunk(channel)
         #Erase time command
-        elif 'erase' in content:
-            commands.monitorChannel(channel)
-            await commands.deleteMessage(message)
+        # elif 'erase' in content:
+        #     commands.monitorChannel(channel)
+        #     await commands.deleteMessage(message)
         #Invalid message
         else:
             await channel.send('Invalid command. Type "!help" for a list of commands')
