@@ -12,10 +12,10 @@ monitoredChannels = []
 #Outputs the current list of commands
 async def sendHelp(channel):
     print("Sending help message")
-    for command in worker.command_dict:
+    for command in worker.get_commands():
         print("!" + command)
     print("Sent successfully")
-    return;
+    return
 
 #Current maximum number of jpgs and pngs in the resource folders for KC
 crimsonimages = listdir(resources + "KingCrimson/")
@@ -29,7 +29,7 @@ async def sendKC(channel):
     print("Sending " + file_to_send)
     await channel.send(file=discord.File(resources + 'KingCrimson/' + file_to_send))
     print("Sent successfully")
-    return;
+    return
 
 #Number of thinking gifs
 thunklist = listdir(resources + "hmm")
@@ -42,7 +42,7 @@ async def sendThunk(channel):
     print("Sending " + file_to_send)
     await channel.send(file=discord.File('./resources/hmm/'+ file_to_send))
     print("Sent successfully")
-    return;
+    return
 
 async def eraseTime(message):
     global monitoredChannels
@@ -58,20 +58,20 @@ async def eraseTime(message):
         # await channel.send('...but if you must know, ' + message.author.name + ' said: \"' + message.content + '\"' )
         monitoredChannels.remove(channel)
         print("Ability successfuly used")
-    return;
+    return
 
 async def deleteMessage(message):
     print("Erasing \"" + message.content+"\"")
     await message.delete()
     print("Erased successfully")
-    return;
+    return
 
 def primeAbility(message):
     # monitorChannel(message.channel)
     # await deleteMessage(message)
-    return;
+    return
 
 def monitorChannel(channel):
     monitoredChannels.append(channel)
     print("Monitoring " + channel.name)
-    return;
+    return

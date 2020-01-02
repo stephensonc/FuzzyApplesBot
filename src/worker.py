@@ -12,6 +12,11 @@ command_dict = {
             #"erase": (commands.primeAbility, "- Activates King Crimson's ability")
 }
 
+
+def get_commands():
+    return command_dict
+
+
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -26,7 +31,7 @@ async def on_message(message):
     channel = message.channel
 
     if message.author == client.user:
-        return;
+        return
 
     #Effectively King Crimson's power
     #await commands.eraseTime(message)
@@ -42,12 +47,12 @@ async def on_message(message):
         #Invalid message
         if command_found is False:
             await channel.send('Invalid command. Type "!help" for a list of commands')
-    return;
+    return
 
 def printMonitored():
     for chnl in monitoredChannels:
         print(chnl.name + ", ")
-    return;
+    return
 
 TOKEN= os.environ["TOKEN"]
 client.run(TOKEN)
