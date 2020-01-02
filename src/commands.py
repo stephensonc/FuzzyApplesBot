@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import random
+import worker
 from os import listdir
 
 file = open("HelpMessage.txt", "r")
