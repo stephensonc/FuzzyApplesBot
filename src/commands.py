@@ -10,7 +10,7 @@ monitoredChannels = []
 
 #Outputs the current list of commands
 async def sendHelp(channel):
-    print("Command received")
+    print("Sending help message")
     fileContents = file.read()
     await channel.send(fileContents)
     print("Sent successfully")
@@ -22,7 +22,7 @@ num_png = len(crimsonimages) - 1
 
 #Sends a random King Crimson image
 async def sendKC(channel):
-    print("Command received")
+    print("Sending angery King Crimson")
     rand = random.randint(0, num_png)
     file_to_send = 'KingCrimson' + str(rand) + '.png'
     print("Sending " + file_to_send)
@@ -35,7 +35,7 @@ thunklist = listdir(resources + "hmm")
 num_thunk = len(thunklist) - 1
 #Sends a thinking gif
 async def sendThunk(channel):
-    print("Command received")
+    print("Sending thonking image")
     rand = random.randint(0, num_thunk)
     file_to_send = str(rand)+'.gif'
     print("Sending " + file_to_send)

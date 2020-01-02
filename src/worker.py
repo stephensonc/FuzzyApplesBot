@@ -27,6 +27,7 @@ async def on_message(message):
 
     #if the text should be parsed for a command
     if content.startswith("!"):
+        print("Command received")
         #Help Command
         if 'help' in content:
             await commands.sendHelp(channel)
