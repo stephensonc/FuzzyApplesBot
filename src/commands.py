@@ -12,7 +12,7 @@ monitoredChannels = []
 async def sendHelp(channel):
     print("Sending help message")
     for key in command_dict.keys():
-        help_message += "!" + key + " " + command_dict[key][1]) + "\n"
+        help_message += "!" + key + " " + command_dict[key][1] + "\n"
     await channel.send(help_message)
     print("Sent successfully")
     return
