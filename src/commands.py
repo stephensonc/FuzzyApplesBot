@@ -11,8 +11,8 @@ monitoredChannels = []
 #Outputs the current list of commands
 async def sendHelp(channel):
     print("Sending help message")
-    fileContents = file.read()
-    await channel.send(fileContents)
+    for command in worker.command_dict:
+        print("!" + command)
     print("Sent successfully")
     return;
 
@@ -63,6 +63,11 @@ async def deleteMessage(message):
     print("Erasing \"" + message.content+"\"")
     await message.delete()
     print("Erased successfully")
+    return;
+
+def primeAbility(message):
+    monitorChannel(message.channel)
+    await deleteMessage(message)
     return;
 
 def monitorChannel(channel):

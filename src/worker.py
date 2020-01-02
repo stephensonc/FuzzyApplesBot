@@ -5,6 +5,12 @@ import commands
 import os
 client = discord.Client()
 
+command_dict = {
+            "help": (commands.sendHelp, "- Outputs a list of bot commands"),
+            "angerykc": (commands.sendKC, "- Responds with an angery King Crimson"),
+            "hmm": (commands.sendThunk, "- Responds with a random thinking gif"),
+            #"erase": (commands.primeAbility, "- Activates King Crimson's ability")
+}
 
 @client.event
 async def on_ready():
@@ -28,21 +34,13 @@ async def on_message(message):
     #if the text should be parsed for a command
     if content.startswith("!"):
         print("Command received")
-        #Help Command
-        if 'help' in content:
-            await commands.sendHelp(channel)
-        #Angery face command
-        elif 'angerykc' in content:
-            await commands.sendKC(channel)
-        #Hmm command
-        elif 'hmm' in content:
-            await commands.sendThunk(channel)
-        #Erase time command
-        # elif 'erase' in content:
-        #     commands.monitorChannel(channel)
-        #     await commands.deleteMessage(message)
+        command_found = False
+        for key in command_dict.keys():
+            if key in content:
+                await command_dict[key](0)(channel)
+                command_found = True
         #Invalid message
-        else:
+        if command_found is False:
             await channel.send('Invalid command. Type "!help" for a list of commands')
     return;
 
