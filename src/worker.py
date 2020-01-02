@@ -22,7 +22,7 @@ async def on_message(message):
         return;
 
     #Effectively King Crimson's power
-    await commands.eraseTime(message)
+    # await commands.eraseTime(message)
 
     #if the text should be parsed for a command
     if content.startswith("!"):
@@ -48,5 +48,6 @@ def printMonitored():
     for chnl in monitoredChannels:
         print(chnl.name + ", ")
     return;
+
 
 client.run('NTkyODk4NDM0MzQwNzQ5MzEz.XRGYDg.77FbXwZPipf-Q2k_TEcUVz8IPx8')
