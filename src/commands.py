@@ -1,8 +1,14 @@
 import discord
 import asyncio
 import random
-import worker
 from os import listdir
+
+command_dict = {
+            "help": (commands.sendHelp, "- Outputs a list of bot commands"),
+            "angerykc": (commands.sendKC, "- Responds with an angery King Crimson"),
+            "hmm": (commands.sendThunk, "- Responds with a random thinking gif"),
+            #"erase": (commands.primeAbility, "- Activates King Crimson's ability")
+}
 
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
@@ -12,8 +18,8 @@ monitoredChannels = []
 #Outputs the current list of commands
 async def sendHelp(channel):
     print("Sending help message")
-    for command in worker.get_commands():
-        print("!" + command)
+    for key in command_dict.keys():
+        print("!", key, " ", command_dict[key][1])
     print("Sent successfully")
     return
 

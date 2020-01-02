@@ -5,16 +5,7 @@ import commands
 import os
 client = discord.Client()
 
-command_dict = {
-            "help": (commands.sendHelp, "- Outputs a list of bot commands"),
-            "angerykc": (commands.sendKC, "- Responds with an angery King Crimson"),
-            "hmm": (commands.sendThunk, "- Responds with a random thinking gif"),
-            #"erase": (commands.primeAbility, "- Activates King Crimson's ability")
-}
-
-
-def get_commands():
-    return command_dict
+command_dict = commands.command_dict
 
 
 @client.event
