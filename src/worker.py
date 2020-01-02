@@ -37,7 +37,7 @@ async def on_message(message):
         command_found = False
         for key in command_dict.keys():
             if key in content:
-                await command_dict[key](0)(channel)
+                await command_dict[key][0](channel)
                 command_found = True
         #Invalid message
         if command_found is False:
