@@ -2,6 +2,7 @@ import discord
 import asyncio
 import random
 import commands
+import os
 client = discord.Client()
 
 
@@ -49,4 +50,5 @@ def printMonitored():
         print(chnl.name + ", ")
     return;
 
-client.run(process.env.TOKEN)
+TOKEN= os.environ["TOKEN"]
+client.run(TOKEN)
