@@ -3,13 +3,6 @@ import asyncio
 import random
 from os import listdir
 
-command_dict = {
-            "help": (sendHelp, "- Outputs a list of bot commands"),
-            "angerykc": (sendKC, "- Responds with an angery King Crimson"),
-            "hmm": (sendThunk, "- Responds with a random thinking gif"),
-            #"erase": (commands.primeAbility, "- Activates King Crimson's ability")
-}
-
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
 resources = "./resources/"
@@ -81,3 +74,11 @@ def monitorChannel(channel):
     monitoredChannels.append(channel)
     print("Monitoring " + channel.name)
     return
+
+#Dictionary of all commands
+command_dict = {
+            "help": (sendHelp, "- Outputs a list of bot commands"),
+            "angerykc": (sendKC, "- Responds with an angery King Crimson"),
+            "hmm": (sendThunk, "- Responds with a random thinking gif"),
+            #"erase": (commands.primeAbility, "- Activates King Crimson's ability")
+}
