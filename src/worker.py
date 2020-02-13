@@ -13,7 +13,7 @@ command_dict = commands.command_dict
 async def on_ready():
     print("Logged in as")
     print(client.user.name)
-    game = discord.Game("with time")
+    game = discord.Game("with vibes")
     await client.change_presence(status=discord.Status.online, activity=game)
     print("------")
 
@@ -39,7 +39,9 @@ async def on_message(message):
                 command_found = True
         # Invalid message
         if command_found is False:
-            await channel.send('Invalid command. Type "!help" for a list of commands')
+            await channel.send(
+                'Invalid command. Type "!helpvibes" for a list of commands'
+            )
     return
 
 
