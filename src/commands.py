@@ -55,10 +55,10 @@ async def eraseTime(message):
     channel = message.channel
     monitored = True if channel in monitoredChannels else False
 
-    if "disarm" in message.content.lower() and monitored == True:
+    if "disarm" in message.content.lower() and monitored is True:
         monitoredChannels.remove(channel)
         print("Disarmed " + channel.name + " successfully")
-    elif monitored == True:
+    elif monitored is True:
         await deleteMessage(message)
         await channel.send(
             "I erased the time in which "
@@ -92,8 +92,8 @@ def monitorChannel(channel):
 
 # Dictionary of all commands
 command_dict = {
-    "help": (sendHelp, "- Outputs a list of bot commands"),
-    "checkvibe": (sendKC, "- Responds with an angery King Crimson"),
-    "thonkvibes": (sendThunk, "- Responds with a random thinking gif"),
+    "helpvibes": (sendHelp, "- Outputs a list of vibe commands"),
+    "checkvibe": (sendKC, "- Responds with an angery vibe check"),
+    "thonkvibes": (sendThunk, "- Responds with a random thinking vibe"),
     # "erase": (commands.primeAbility, "- Activates King Crimson's ability")
 }
