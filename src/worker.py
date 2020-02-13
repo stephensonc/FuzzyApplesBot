@@ -3,6 +3,7 @@ import asyncio
 import random
 import commands
 import os
+
 client = discord.Client()
 
 command_dict = commands.command_dict
@@ -10,11 +11,12 @@ command_dict = commands.command_dict
 
 @client.event
 async def on_ready():
-    print('Logged in as')
+    print("Logged in as")
     print(client.user.name)
     game = discord.Game("with time")
-    await client.change_presence(status = discord.Status.online, activity = game)
-    print('------')
+    await client.change_presence(status=discord.Status.online, activity=game)
+    print("------")
+
 
 @client.event
 async def on_message(message):
@@ -24,10 +26,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    #Effectively King Crimson's power
-    #await commands.eraseTime(message)
+    # Effectively King Crimson's power
+    # await commands.eraseTime(message)
 
-    #if the text should be parsed for a command
+    # if the text should be parsed for a command
     if content.startswith("!"):
         print("Command received")
         command_found = False
@@ -35,15 +37,17 @@ async def on_message(message):
             if key in content:
                 await commands.command_dict[key][0](channel)
                 command_found = True
-        #Invalid message
+        # Invalid message
         if command_found is False:
             await channel.send('Invalid command. Type "!help" for a list of commands')
     return
 
+
 def printMonitored():
-    for chnl in monitoredChannels:
+    for chnl in commands.monitoredChannels:
         print(chnl.name + ", ")
     return
 
-TOKEN= os.environ["TOKEN"]
+
+TOKEN = os.environ["TOKEN"]
 client.run(TOKEN)
