@@ -31,7 +31,9 @@ async def sendKC(channel):
     rand = random.randint(0, num_png)
     file_to_send = "KingCrimson" + str(rand) + ".png"
     print("Sending " + file_to_send)
-    await channel.send(file=discord.File(resources + "KingCrimson/" + file_to_send))
+    await channel.send(
+        file=discord.File(resources + "KingCrimson/" + file_to_send)
+    )
     print("Sent successfully")
     return
 
@@ -39,6 +41,8 @@ async def sendKC(channel):
 # Number of thinking gifs
 thunklist = listdir(resources + "hmm")
 num_thunk = len(thunklist) - 1
+
+
 # Sends a thinking gif
 async def sendThunk(channel):
     print("Sending thonking image")
@@ -65,7 +69,13 @@ async def eraseTime(message):
             + message.author.mention
             + " sent their message and leapt past it."
         )
-        # await channel.send('...but if you must know, ' + message.author.name + ' said: \"' + message.content + '\"' )
+        # await channel.send(
+        #     "...but if you must know, "
+        #     + message.author.name
+        #     + ' said: "'
+        #     + message.content
+        #     + '"'
+        # )
         monitoredChannels.remove(channel)
         print("Ability successfuly used")
     return
@@ -79,8 +89,8 @@ async def deleteMessage(message):
 
 
 def primeAbility(message):
-    # monitorChannel(message.channel)
-    # await deleteMessage(message)
+    monitorChannel(message.channel)
+    deleteMessage(message)
     return
 
 
