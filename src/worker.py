@@ -7,6 +7,7 @@ import os
 client = discord.Client()
 
 command_dict = commands.command_dict
+command_trigger = "."
 
 
 @client.event
@@ -30,7 +31,7 @@ async def on_message(message):
     # await commands.eraseTime(message)
 
     # if the text should be parsed for a command
-    if content.startswith("!"):
+    if content.startswith(command_trigger):
         print("Command received")
         command_found = False
         for key in command_dict.keys():
@@ -40,7 +41,7 @@ async def on_message(message):
         # Invalid message
         if command_found is False:
             await channel.send(
-                'Invalid command. Type "!helpvibes" for a list of commands'
+                f'Invalid command. Type "{command_trigger}helpvibes" for a list of commands'
             )
     return
 

@@ -6,6 +6,7 @@ from os import listdir
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
 resources = "./resources/"
+command_trigger = "."
 monitoredChannels = []
 
 
@@ -14,7 +15,7 @@ async def sendHelp(channel):
     print("Sending help message")
     help_message = ""
     for key in command_dict.keys():
-        help_message += "!" + key + " " + command_dict[key][1] + "\n"
+        help_message += command_trigger + key + " " + command_dict[key][1] + "\n"
     await channel.send(help_message)
     print("Sent successfully")
     return
