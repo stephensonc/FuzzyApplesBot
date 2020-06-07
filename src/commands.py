@@ -2,6 +2,7 @@ import discord
 import asyncio
 import random
 from os import listdir
+import spotify_commands
 
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
@@ -100,11 +101,11 @@ def monitorChannel(channel):
     print("Monitoring " + channel.name)
     return
 
-
 # Dictionary of all commands
 command_dict = {
     "help": (sendHelp, "- Outputs a list of commands"),
     "angerykc": (sendKC, "- Responds with an angery King Crimson"),
     "thonking": (sendThunk, "- Responds with a random thinking image"),
+    "kcplay": (spotify_commands.playSong, "- Joins voice channel and plays specified song")
     # "erase": (commands.primeAbility, "- Activates King Crimson's ability")
 }

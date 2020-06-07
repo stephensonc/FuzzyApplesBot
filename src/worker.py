@@ -39,10 +39,10 @@ async def on_message(message):
                 await commands.command_dict[key][0](channel)
                 command_found = True
         # Invalid message
-        if command_found is False:
-            await channel.send(
-                f'Invalid command. Type "{command_trigger}help" for a list of commands'
-            )
+        # if command_found is False:
+        #     await channel.send(
+        #         f'Invalid command. Type "{command_trigger}help" for a list of commands'
+        #     )
     return
 
 
