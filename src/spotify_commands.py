@@ -7,7 +7,7 @@ async def playSong(message):
     voice_channel=user.voice.channel
     if voice_channel!= None:
         # create StreamPlayer
-        vc= await voice_channel.join()
+        vc= await client.join_voice_channel(voice_channel)
         player = vc.create_ffmpeg_player('./resources/mp3s/HeheBoi.mp3', after=lambda: print('done'))
         player.start()
         while not player.is_done():
