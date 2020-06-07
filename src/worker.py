@@ -7,7 +7,7 @@ import os
 client = discord.Client()
 
 command_dict = commands.command_dict
-command_trigger = "."
+command_trigger = "!"
 
 
 @client.event
