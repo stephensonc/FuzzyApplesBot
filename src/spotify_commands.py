@@ -1,6 +1,6 @@
 import discord
 import asyncio
-
+client = discord.Client()
 
 async def playSong(message):
     user=message.author
