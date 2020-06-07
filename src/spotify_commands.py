@@ -4,7 +4,7 @@ import asyncio
 
 async def playSong(message):
     user=message.author
-    voice_channel=user.voice.voice_channel
+    voice_channel=user.voice.channel
     channel=None
     if voice_channel!= None:
         await client.say('User is in channel: '+ voice_channel)
