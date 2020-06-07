@@ -12,12 +12,12 @@ monitoredChannels = []
 
 
 # Outputs the current list of commands
-async def sendHelp(channel):
+async def sendHelp(message):
     print("Sending help message")
     help_message = ""
     for key in command_dict.keys():
         help_message += command_trigger + key + " " + command_dict[key][1] + "\n"
-    await channel.send(help_message)
+    await message.channel.send(help_message)
     print("Sent successfully")
     return
 
@@ -28,12 +28,12 @@ num_png = len(crimsonimages) - 1
 
 
 # Sends a random King Crimson image
-async def sendKC(channel):
+async def sendKC(message):
     print("Sending angery King Crimson")
     rand = random.randint(0, num_png)
     file_to_send = "KingCrimson" + str(rand) + ".png"
     print("Sending " + file_to_send)
-    await channel.send(
+    await message.channel.send(
         file=discord.File(resources + "KingCrimson/" + file_to_send)
     )
     print("Sent successfully")
@@ -46,12 +46,12 @@ num_thunk = len(thunklist) - 1
 
 
 # Sends a thinking gif
-async def sendThunk(channel):
+async def sendThunk(message):
     print("Sending thonking image")
     rand = random.randint(0, num_thunk)
     file_to_send = str(rand) + ".gif"
     print("Sending " + file_to_send)
-    await channel.send(file=discord.File("./resources/hmm/" + file_to_send))
+    await message.channel.send(file=discord.File("./resources/hmm/" + file_to_send))
     print("Sent successfully")
     return
 
