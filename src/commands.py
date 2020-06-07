@@ -6,7 +6,7 @@ from os import listdir
 file = open("HelpMessage.txt", "r")
 client = discord.Client()
 resources = "./resources/"
-command_trigger = "."
+command_trigger = "!"
 monitoredChannels = []
 
 
@@ -103,8 +103,8 @@ def monitorChannel(channel):
 
 # Dictionary of all commands
 command_dict = {
-    "helpvibes": (sendHelp, "- Outputs a list of vibe commands"),
-    "checkvibe": (sendKC, "- Responds with an angery vibe check"),
-    "thonkvibes": (sendThunk, "- Responds with a random thinking vibe"),
+    "help": (sendHelp, "- Outputs a list of commands"),
+    "angerykc": (sendKC, "- Responds with an angery King Crimson"),
+    "thonking": (sendThunk, "- Responds with a random thinking image"),
     # "erase": (commands.primeAbility, "- Activates King Crimson's ability")
 }
