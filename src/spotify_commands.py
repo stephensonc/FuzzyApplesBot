@@ -2,8 +2,8 @@ import discord
 import asyncio
 
 
-async def playSong(message):
-    user=message.author
+async def playSong(channel):
+    user=channel.message.author
     voice_channel=user.voice.voice_channel
     channel=None
     if voice_channel!= None:
