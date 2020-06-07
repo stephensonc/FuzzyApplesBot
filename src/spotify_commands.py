@@ -6,7 +6,6 @@ async def playSong(message):
     user=message.author
     voice_channel=user.voice.channel
     if voice_channel!= None:
-        await message.channel.send('User is in channel: '+ voice_channel)
         # create StreamPlayer
         vc= await voice_channel.join()
         player = vc.create_ffmpeg_player('./resources/mp3s/HeheBoi.mp3', after=lambda: print('done'))
