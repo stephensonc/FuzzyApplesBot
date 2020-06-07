@@ -7,14 +7,14 @@ import os
 client = discord.Client()
 
 command_dict = commands.command_dict
-command_trigger = "."
+command_trigger = "!"
 
 
 @client.event
 async def on_ready():
     print("Logged in as")
     print(client.user.name)
-    game = discord.Game("with time")
+    game = discord.Game("with vibes")
     await client.change_presence(status=discord.Status.online, activity=game)
     print("------")
 
@@ -41,7 +41,7 @@ async def on_message(message):
         # Invalid message
         if command_found is False:
             await channel.send(
-                f'Invalid command. Type "{command_trigger}help" for a list of commands'
+                f'Invalid command. Type "{command_trigger}helpvibes" for a list of commands'
             )
     return
 

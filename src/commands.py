@@ -103,8 +103,8 @@ def monitorChannel(channel):
 
 # Dictionary of all commands
 command_dict = {
-    "help": (sendHelp, "- Outputs a list of commands"),
-    "angerykc": (sendKC, "- Responds with an angery King Crimson"),
-    "thonking": (sendThunk, "- Responds with a random thinking image"),
+    "helpvibes": (sendHelp, "- Outputs a list of commands"),
+    "checkvibe": (sendKC, "- Responds with an angery vibe check"),
+    "thonkvibes": (sendThunk, "- Responds with a random thinking image"),
     # "erase": (commands.primeAbility, "- Activates King Crimson's ability")
 }
