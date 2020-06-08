@@ -9,14 +9,8 @@ import spotipy.util as util
 from json.decoder import JSONDecodeError
 
 SPOTIFYTOKEN = os.environ['SPOTIFYTOKEN']
-SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
 scope = 'user-read-private user-read-playback-state user-modify-playback-state'
-try:
-    token = util.prompt_for_user_token(SPOTIFYUSERNAME, scope)
-except (AttributeError, JSONDecodeError):
-    os.remove(f".cache-{SPOTIFYUSERNAME}")
-    token = util.prompt_for_user_token(SPOTIFYUSERNAME, scope)
-spotifyObject = spotipy.Spotify(auth=token)
+spotifyObject = spotipy.Spotify(auth=SPOTIFYTOKEN)
 devices = spotifyObject.devices()
 print(json.dumps(devices, sort_keys=True, indent=4))
 deviceID = devices['devices'][0]['id']
