@@ -12,12 +12,16 @@ async def playSong(message):
         # create StreamPlayer
         vc = await voice_channel.connect()
         # player = vc.create_ffmpeg_player('./resources/mp3s/HeheBoi.mp3', after=lambda: print('done'))
-        player = discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
-        player.start()
-        while not player.is_done():
-            await asyncio.sleep(1)
+        try:
+            client.voice.play(discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3'))
+        except discord.errors.ClientException as e:
+            if str(e) == "Not connected to voice.":
+                raise UserError("Error playing clip.")
+                await vc.disconnect()
+            else:
+                raise
+                await vc.disconnect()
         # disconnect after the player has finished
-        player.stop()
         await vc.disconnect()
     else:
         await message.channel.send('User is not in a voice channel.')
