@@ -17,11 +17,11 @@ async def playSong(message):
             vc.play(audio_source)
         except discord.errors.ClientException as e:
             if str(e) == "Not connected to voice.":
+                await vc.disconnect()
                 raise UserError("Error playing clip.")
-                await vc.disconnect()
             else:
-                raise
                 await vc.disconnect()
+                raise
         # disconnect after the player has finished
         await vc.disconnect()
     else:
