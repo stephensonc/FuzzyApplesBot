@@ -16,7 +16,9 @@ async def playSong(message):
         try:
             audio_source = discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
             voice_client.play(audio_source)
+            playing_for = 0
             while(voice_client.is_playing()):
+                playing_for += 1
                 # wait until end of audio
             await voice_client.disconnect()
         except:
