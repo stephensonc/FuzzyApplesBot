@@ -10,8 +10,9 @@ async def playSong(message):
     voice_channel=user.voice.channel
     if voice_channel!= None:
         # create StreamPlayer
-        vc= await voice_channel.connect()
-        player = vc.create_ffmpeg_player('./resources/mp3s/HeheBoi.mp3', after=lambda: print('done'))
+        vc = await voice_channel.connect()
+        # player = vc.create_ffmpeg_player('./resources/mp3s/HeheBoi.mp3', after=lambda: print('done'))
+        player = discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
         player.start()
         while not player.is_done():
             await asyncio.sleep(1)
