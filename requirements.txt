@@ -2,3 +2,4 @@ discord.py[voice]==1.2.5
 ffmpeg-python
 PyNaCl
 opuslib
+spotipy
