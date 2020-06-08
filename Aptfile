@@ -1,6 +1,0 @@
-build-essential
-unzip
-software-properties-common
-libopus-dev
-libffi-dev
-libsodium-dev
