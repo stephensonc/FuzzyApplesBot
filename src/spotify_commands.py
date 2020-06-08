@@ -3,7 +3,7 @@ import asyncio
 
 client = discord.Client()
 if not discord.opus.is_loaded():
-    discord.opus.load_opus('opus')
+    discord.opus.load_opus()
 
 async def playSong(message):
     user=message.author
