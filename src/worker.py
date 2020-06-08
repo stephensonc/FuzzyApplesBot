@@ -3,9 +3,6 @@ import asyncio
 import random
 import commands
 import os
-from opus_loader import load_opus_lib
-
-load_opus_lib()
 
 client = discord.Client()
 
