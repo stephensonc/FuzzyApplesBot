@@ -7,9 +7,17 @@ import spotipy
 import webbrowser
 import spotipy.util as util
 from json.decoder import JSONDecodeError
-
+SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
+SPOTIFYCLIENTID = os.environ['CLIENTID']
 SPOTIFYTOKEN = os.environ['SPOTIFYTOKEN']
+SPOTIFYREDIRECTURI = os.environ['REDIRECTURI']
 scope = 'user-read-private user-read-playback-state user-modify-playback-state'
+util.prompt_for_user_token(SPOTIFYUSERNAME,
+                           scope,
+                           client_id=SPOTIFYCLIENTID,
+                           client_secret=SPOTIFYTOKEN,
+                           redirect_uri=SPOTIFYREDIRECTURI)
+
 spotifyObject = spotipy.Spotify(auth=SPOTIFYTOKEN)
 devices = spotifyObject.devices()
 print(json.dumps(devices, sort_keys=True, indent=4))
