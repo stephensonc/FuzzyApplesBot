@@ -19,6 +19,6 @@ async def playSong(message):
                 await voice_client.disconnect()
                 await message.channel.send('Error playing audio file')
                 raise
-        await voice_client.disconnect()
+        # await voice_client.disconnect()
     else:
         await message.channel.send('User is not in a voice channel.')
