@@ -14,12 +14,10 @@ async def playSong(message):
         # player = vc.create_ffmpeg_player('./resources/mp3s/HeheBoi.mp3', after=lambda: print('done'))
         try:
             audio_source = discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
-            vc.play(audio_source)
+            vc.play(audio_source, after=vc.disconnect())
         except:
                 await vc.disconnect()
                 await message.channel.send('Error playing audio file')
                 raise
-        finally:
-            await vc.disconnect()
     else:
         await message.channel.send('User is not in a voice channel.')
