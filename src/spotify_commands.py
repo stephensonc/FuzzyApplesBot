@@ -12,11 +12,11 @@ SPOTIFYCLIENTID = os.environ['CLIENTID']
 SPOTIFYTOKEN = os.environ['SPOTIFYTOKEN']
 SPOTIFYREDIRECTURI = os.environ['REDIRECTURI']
 scope = 'user-read-private user-read-playback-state user-modify-playback-state'
-util.prompt_for_user_token(SPOTIFYUSERNAME,
-                           scope,
-                           client_id=SPOTIFYCLIENTID,
-                           client_secret=SPOTIFYTOKEN,
-                           redirect_uri=SPOTIFYREDIRECTURI)
+# util.prompt_for_user_token(SPOTIFYUSERNAME,
+#                            scope,
+#                            client_id=SPOTIFYCLIENTID,
+#                            client_secret=SPOTIFYTOKEN,
+#                            redirect_uri=SPOTIFYREDIRECTURI)
 
 spotifyObject = spotipy.Spotify(auth=SPOTIFYTOKEN)
 devices = spotifyObject.devices()
