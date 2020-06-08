@@ -13,7 +13,7 @@ async def playSong(message):
         vc = await voice_channel.connect()
         # player = vc.create_ffmpeg_player('./resources/mp3s/HeheBoi.mp3', after=lambda: print('done'))
         try:
-            audio_source = await discord.FFmpegOpusAudio.from_probe('./resources/mp3s/HeheBoi.mp3')
+            audio_source = await discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
             vc.play(audio_source)
         except discord.errors.ClientException as e:
             if str(e) == "Not connected to voice.":
