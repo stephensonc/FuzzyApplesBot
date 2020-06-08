@@ -6,6 +6,7 @@ import json
 import spotipy
 import webbrowser
 import spotipy.util as util
+from spotipy.oauth2 import SpotifyClientCredentials
 from json.decoder import JSONDecodeError
 
 SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
@@ -43,13 +44,15 @@ async def playSong(message):
 
 async def testSpotifyIntegration(message):
     try:
-        util.prompt_for_user_token(SPOTIFYUSERNAME, scope,
-                                   client_id=SPOTIFYCLIENTID,
-                                   client_secret=SPOTIFYTOKEN,
-                                   redirect_uri=SPOTIFYREDIRECTURI)
-        spotifyObject = spotipy.Spotify(auth=SPOTIFYTOKEN)
-        devices = spotifyObject.devices()
-        print(json.dumps(devices, sort_keys=True, indent=4))
-        deviceID = devices['devices'][0]['id']
+        client_credentials_manager = SpotifyClientCredentials()
+        sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+        playlists = sp.user_playlists(SPOTIFYUSERNAME)
+        while playlists:
+            for i, playlist in enumerate(playlists['items']):
+                print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
+                if playlists['next']:
+                    playlists = sp.next(playlists)
+                else:
+                    playlists = None
     except:
         print("Spotify user authentification failed")
