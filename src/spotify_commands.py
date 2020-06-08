@@ -16,7 +16,7 @@ async def playSong(message):
             audio_source = discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
             voice_client.play(audio_source, after=await voice_client.disconnect())
         except:
-                await vc.disconnect()
+                await voice_client.disconnect()
                 await message.channel.send('Error playing audio file')
                 raise
     else:
