@@ -107,5 +107,6 @@ command_dict = {
     "angerykc": (sendKC, "- Responds with an angery King Crimson"),
     "thonking": (sendThunk, "- Responds with a random thinking image"),
     "kcplay": (spotify_commands.playSong, "- Joins voice channel and plays specified song")
+    "testspotify": (spotify_commands.testSpotifyIntegration, "- Attempts to connect to spotify")
     # "erase": (commands.primeAbility, "- Activates King Crimson's ability")
 }
