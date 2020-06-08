@@ -43,16 +43,14 @@ async def playSong(message):
         await message.channel.send('User is not in a voice channel.')
 
 async def testSpotifyIntegration(message):
-    try:
-        client_credentials_manager = SpotifyClientCredentials()
-        sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-        playlists = sp.user_playlists(SPOTIFYUSERNAME)
-        while playlists:
-            for i, playlist in enumerate(playlists['items']):
-                print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
-                if playlists['next']:
-                    playlists = sp.next(playlists)
-                else:
-                    playlists = None
-    except:
-        print("Spotify user authentification failed")
+
+    client_credentials_manager = SpotifyClientCredentials()
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    playlists = sp.user_playlists(SPOTIFYUSERNAME)
+    while playlists:
+        for i, playlist in enumerate(playlists['items']):
+            print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
+            if playlists['next']:
+                playlists = sp.next(playlists)
+            else:
+                playlists = None
