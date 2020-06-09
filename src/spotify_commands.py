@@ -60,7 +60,7 @@ async def getSongsFromPlaylist(message):
     playlists = sp.user_playlists(SPOTIFYUSERNAME)
     song_list = ''
     for list in playlists['items']:
-        if tosearch in list.lower():
+        if tosearch in list['name'].lower():
             for song in list:
                 print(type(song))
                 song_list += song['name'] + song['artists'] + '\n'
