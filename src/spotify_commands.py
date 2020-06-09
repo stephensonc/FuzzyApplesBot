@@ -10,8 +10,8 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from json.decoder import JSONDecodeError
 
 SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
-SPOTIFYCLIENTID = os.environ['CLIENTID']
-SPOTIFYTOKEN = os.environ['SPOTIFYTOKEN']
+SPOTIFYCLIENTID = os.environ['SPOTIPY_CLIENT_ID']
+SPOTIFYTOKEN = os.environ['SPOTIPY_CLIENT_SECRET']
 SPOTIFYREDIRECTURI = os.environ['REDIRECTURI']
 scope = 'user-read-private user-read-playback-state user-modify-playback-state'
 
