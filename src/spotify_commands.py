@@ -48,7 +48,7 @@ async def testSpotifyIntegration(message):
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     playlists = sp.user_playlists(SPOTIFYUSERNAME)
     playlistnames = ''
-    for list in playlists:
+    for list in playlists['items']:
         print(type(list))
-        playlistnames += list + '\n'
+        playlistnames += list['name'] + '\n'
     await message.channel.send(playlistnames)
