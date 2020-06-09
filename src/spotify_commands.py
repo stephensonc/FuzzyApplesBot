@@ -49,6 +49,19 @@ async def testSpotifyIntegration(message):
     playlists = sp.user_playlists(SPOTIFYUSERNAME)
     playlistnames = ''
     for list in playlists['items']:
-        print(type(list))
         playlistnames += list['name'] + '\n'
     await message.channel.send(playlistnames)
+
+async def getSongsFromPlaylist(message):
+    tosearch = message.content.lower()[13:]
+    client_credentials_manager = SpotifyClientCredentials()
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    playlists = sp.user_playlists(SPOTIFYUSERNAME)
+    song_list = ''
+    for list in playlists:
+        if tosearch in list.lower():
+            for song in list:
+                song_list += song['name'] + song['artists'] + '\n'
+    print(song_list)
+    await message.channel.send(song_list)
+    return song_list
