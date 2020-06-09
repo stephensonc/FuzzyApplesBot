@@ -61,7 +61,11 @@ async def getSongsFromPlaylist(message):
     for list in playlists:
         if tosearch in list.lower():
             for song in list:
+                print(type(song))
                 song_list += song['name'] + song['artists'] + '\n'
-    print(song_list)
-    await message.channel.send(song_list)
-    return song_list
+    if song_list is not '':
+        print(song_list)
+        await message.channel.send(song_list)
+        return song_list
+    else:
+        await message.channel.send("Playlist not found")
