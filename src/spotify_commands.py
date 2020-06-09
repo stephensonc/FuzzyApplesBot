@@ -54,11 +54,12 @@ async def testSpotifyIntegration(message):
 
 async def getSongsFromPlaylist(message):
     tosearch = message.content.lower()[13:]
+    print(tosearch)
     client_credentials_manager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     playlists = sp.user_playlists(SPOTIFYUSERNAME)
     song_list = ''
-    for list in playlists:
+    for list in playlists['items']:
         if tosearch in list.lower():
             for song in list:
                 print(type(song))
