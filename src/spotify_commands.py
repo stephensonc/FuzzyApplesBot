@@ -2,10 +2,7 @@ import os
 import sys
 import discord
 import asyncio
-import json
 import spotipy
-import webbrowser
-import spotipy.util as util
 from spotipy.oauth2 import SpotifyClientCredentials
 
 SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
@@ -30,10 +27,10 @@ async def banish(message):
         await message.channel.send('User is not in a voice channel.')
         return False
 
-async def play_song(message):
+async def play_song(message, song_name_and_artist=''):
     if await summon(message): # Connected to voice channel properly
         try:
-            audio_source = discord.FFmpegPCMAudio('https://www.youtube.com/watch?v=W4YW1bk04-U')
+            audio_source = discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
             voice_client.play(audio_source, after=lambda x: print('Played audio.'))
             playing_for = 0
             while(voice_client.is_playing()):
@@ -46,6 +43,11 @@ async def play_song(message):
                 await message.channel.send('Error playing audio file')
                 raise
 
+async def play_list(message):
+    playlist = get_songs_from_playlist(message.content[12:])
+    for song in playlist:
+        await play_song(message, song)
+
 async def print_user_playlist_names(message):
     client_credentials_manager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
@@ -55,7 +57,7 @@ async def print_user_playlist_names(message):
         playlistnames += list['name'] + '\n'
     await message.channel.send(playlistnames)
 
-async def get_songs_from_playlist(to_search):
+def get_songs_from_playlist(to_search):
     """Return a list of songs and their artists from a Spotify Playlist."""
     print(tosearch)
     client_credentials_manager = SpotifyClientCredentials()

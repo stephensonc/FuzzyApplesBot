@@ -107,9 +107,9 @@ command_dict = {
     "angerykc": (send_KC, "- Responds with an angery King Crimson"),
     "thonking": (send_thunk, "- Responds with a random thinking image"),
     "kcplay": (spotify_commands.play_song, "- Joins voice channel and plays specified song"),
+    "kcplaylist": (spotify_commands.play_list, "- Joins voice channel and plays a list of songs"),
     "testspotify": (spotify_commands.print_user_playlist_names, "- Attempts to connect to spotify"),
     "summon": (spotify_commands.summon, "- Attempts to join the user's voice channel"),
-    "banish": (spotify_commands.banish, "- Leaves a voice channel, if it is in one"),
-    "songsfromplaylist": (spotify_commands.get_songs_from_playlist, "- Returns a list of songs in a spotify playlist")
+    "banish": (spotify_commands.banish, "- Leaves a voice channel, if it is in one")
     # "erase": (commands.prime_ability, "- Activates King Crimson's ability")
 }
