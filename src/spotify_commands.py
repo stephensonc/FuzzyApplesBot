@@ -58,17 +58,16 @@ async def getSongsFromPlaylist(message):
     client_credentials_manager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     playlists = sp.user_playlists(SPOTIFYUSERNAME)
-    song_list = ''
+    song_list = []
     for list in playlists['items']:
         if tosearch in list['name'].lower():
             if tosearch in list['name'].lower():
                 tracks = sp.playlist_tracks(playlist_id=list['id'], fields='items.track.name,items.track.artists')
                 for track in tracks['items']:
                     track = track['track']
-                    print(type(track['artists']))
-                    song_list += str(track['name']) +' - ' + str(track['artists'][0]['name']) + '\n'
+                    song_list.append(str(track['name']) + ' - ' + str(track['artists'][0]['name']))
     if song_list is not '':
-        await message.channel.send(song_list)
+        print(song_list)
         return song_list
     else:
         await message.channel.send("Playlist not found")
