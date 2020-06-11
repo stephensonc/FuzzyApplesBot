@@ -8,11 +8,11 @@ file = open("HelpMessage.txt", "r")
 client = discord.Client()
 resources = "./resources/"
 command_trigger = "!"
-monitoredChannels = []
+monitored_channels = []
 
 
 # Outputs the current list of commands
-async def sendHelp(message):
+async def send_help(message):
     print("Sending help message")
     help_message = ""
     for key in command_dict.keys():
@@ -28,7 +28,7 @@ num_png = len(crimsonimages) - 1
 
 
 # Sends a random King Crimson image
-async def sendKC(message):
+async def send_KC(message):
     print("Sending angery King Crimson")
     rand = random.randint(0, num_png)
     file_to_send = "KingCrimson" + str(rand) + ".png"
@@ -46,7 +46,7 @@ num_thunk = len(thunklist) - 1
 
 
 # Sends a thinking gif
-async def sendThunk(message):
+async def send_thunk(message):
     print("Sending thonking image")
     rand = random.randint(0, num_thunk)
     file_to_send = str(rand) + ".gif"
@@ -56,16 +56,16 @@ async def sendThunk(message):
     return
 
 
-async def eraseTime(message):
-    global monitoredChannels
+async def erase_time(message):
+    global monitored_channels
     channel = message.channel
-    monitored = True if channel in monitoredChannels else False
+    monitored = True if channel in monitored_channels else False
 
     if "disarm" in message.content.lower() and monitored is True:
-        monitoredChannels.remove(channel)
+        monitored_channels.remove(channel)
         print("Disarmed " + channel.name + " successfully")
     elif monitored is True:
-        await deleteMessage(message)
+        await delete_message(message)
         await channel.send(
             "I erased the time in which "
             + message.author.mention
@@ -78,36 +78,38 @@ async def eraseTime(message):
         #     + message.content
         #     + '"'
         # )
-        monitoredChannels.remove(channel)
+        monitored_channels.remove(channel)
         print("Ability successfuly used")
     return
 
 
-async def deleteMessage(message):
+async def delete_message(message):
     print('Erasing "' + message.content + '"')
     await message.delete()
     print("Erased successfully")
     return
 
 
-def primeAbility(message):
-    monitorChannel(message.channel)
-    deleteMessage(message)
+def prime_ability(message):
+    monitor_channel(message.channel)
+    delete_message(message)
     return
 
 
-def monitorChannel(channel):
-    monitoredChannels.append(channel)
+def monitor_channel(channel):
+    monitored_channels.append(channel)
     print("Monitoring " + channel.name)
     return
 
 # Dictionary of all commands
 command_dict = {
-    "help": (sendHelp, "- Outputs a list of commands"),
-    "angerykc": (sendKC, "- Responds with an angery King Crimson"),
-    "thonking": (sendThunk, "- Responds with a random thinking image"),
-    "kcplay": (spotify_commands.playSong, "- Joins voice channel and plays specified song"),
-    "testspotify": (spotify_commands.testSpotifyIntegration, "- Attempts to connect to spotify"),
-    "printplaylist": (spotify_commands.getSongsFromPlaylist, "- Retrieves the list of songs in a given playlist on spotify")
-    # "erase": (commands.primeAbility, "- Activates King Crimson's ability")
+    "help": (send_help, "- Outputs a list of commands"),
+    "angerykc": (send_KC, "- Responds with an angery King Crimson"),
+    "thonking": (send_thunk, "- Responds with a random thinking image"),
+    "kcplay": (spotify_commands.play_song, "- Joins voice channel and plays specified song"),
+    "testspotify": (spotify_commands.print_user_playlist_names, "- Attempts to connect to spotify"),
+    "summon": (spotify_commands.summon, "- Attempts to join the user's voice channel"),
+    "banish": (spotify_commands.banish, "- Leaves a voice channel, if it is in one"),
+    "songsfromplaylist": (spotify_commands.get_songs_from_playlist, "- Returns a list of songs in a spotify playlist")
+    # "erase": (commands.prime_ability, "- Activates King Crimson's ability")
 }

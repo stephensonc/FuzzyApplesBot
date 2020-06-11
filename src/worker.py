@@ -28,7 +28,7 @@ async def on_message(message):
         return
 
     # King Crimson's power
-    # await commands.eraseTime(message)
+    # await commands.erase_time(message)
 
     # if the text should be parsed for a command
     if content.startswith(command_trigger):
@@ -46,7 +46,7 @@ async def on_message(message):
     return
 
 
-def printMonitored():
+def print_monitored():
     for chnl in commands.monitoredChannels:
         print(chnl.name + ", ")
     return
