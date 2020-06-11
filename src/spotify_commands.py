@@ -53,7 +53,7 @@ async def testSpotifyIntegration(message):
     await message.channel.send(playlistnames)
 
 async def getSongsFromPlaylist(message):
-    tosearch = message.content.lower()[13:]
+    tosearch = message.content.lower()[15:]
     print(tosearch)
     client_credentials_manager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
