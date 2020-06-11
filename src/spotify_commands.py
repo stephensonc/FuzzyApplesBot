@@ -63,7 +63,7 @@ async def getSongsFromPlaylist(message):
         if tosearch in list['name'].lower():
             for song in list['tracks']:
                 print(type(song))
-                song_list += song['name'] + '\n'
+                song_list += song['track']['name'] + song['track']['artists'] + '\n'
     if song_list is not '':
         await message.channel.send(song_list)
         return song_list
