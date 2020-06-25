@@ -143,7 +143,6 @@ class KingCrimsonBot:
             await self.play_song(message, song)
 
     async def print_user_playlist_names(self, message):
-        client_credentials_manager =
         playlists = self.spotipy_obj.user_playlists(SPOTIFYUSERNAME)
         playlistnames = ''
         for list in playlists['items']:
