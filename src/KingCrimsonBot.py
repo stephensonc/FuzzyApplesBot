@@ -3,7 +3,6 @@ import random
 import os
 from os import listdir
 import sys
-import spotify_commands
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
