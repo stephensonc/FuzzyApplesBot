@@ -79,7 +79,7 @@ async def erase_time(message):
         #     + '"'
         # )
         monitored_channels.remove(channel)
-        print("Ability successfuly used")
+        print("Ability successfully used")
     return
 
 

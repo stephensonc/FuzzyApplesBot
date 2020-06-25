@@ -7,11 +7,13 @@ from spotipy.oauth2 import SpotifyClientCredentials
 
 SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
 client = discord.Client()
+voice_client = None
 
 if not discord.opus.is_loaded():
     discord.opus.load_opus('opus')
 
 async def summon(message):
+    global voice_client
     voice_channel = message.author.voice.channel
     if voice_channel is not None:
         voice_client = await voice_channel.connect()
@@ -20,14 +22,17 @@ async def summon(message):
         return False
 
 async def banish(message):
+    global voice_client
     voice_channel = message.author.voice.channel
     if voice_channel is not None:
-        voice_client = await voice_channel.connect()
+        await voice_client.disconnect()
+        voice_client = None
+        return True
     else:
         await message.channel.send('User is not in a voice channel.')
         return False
 
-async def play_song(message, song_name_and_artist=''):
+async def play_song(message):
     if await summon(message): # Connected to voice channel properly
         try:
             audio_source = discord.FFmpegPCMAudio(source='./resources/mp3s/HeheBoi.mp3', pipe=True)
