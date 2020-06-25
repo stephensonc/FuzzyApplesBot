@@ -149,7 +149,7 @@ async def print_user_playlist_names(self, message):
         playlistnames += list['name'] + '\n'
     await message.channel.send(playlistnames)
 
-def get_songs_from_playlist(to_search):
+def get_songs_from_playlist(self, to_search):
     """Return a list of songs and their artists from a Spotify Playlist."""
     print(tosearch)
     client_credentials_manager = SpotifyClientCredentials()
