@@ -1,7 +1,7 @@
 import discord
 import asyncio
 import random
-from src import KingCrimsonBot
+from src.KingCrimsonBot import KingCrimsonBot
 import os
 
 client = discord.Client()
