@@ -30,7 +30,7 @@ async def banish(message):
 async def play_song(message, song_name_and_artist=''):
     if await summon(message): # Connected to voice channel properly
         try:
-            audio_source = discord.FFmpegPCMAudio('./resources/mp3s/HeheBoi.mp3')
+            audio_source = discord.FFmpegPCMAudio(source='./resources/mp3s/HeheBoi.mp3', pipe=True)
             voice_client.play(audio_source, after=lambda x: print('Played audio.'))
             playing_for = 0
             while(voice_client.is_playing()):
