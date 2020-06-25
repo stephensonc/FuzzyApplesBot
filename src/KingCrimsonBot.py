@@ -4,6 +4,7 @@ import os
 from os import listdir
 import sys
 import spotipy
+import discord
 from spotipy.oauth2 import SpotifyClientCredentials
 
 class KingCrimsonBot:
@@ -33,7 +34,7 @@ class KingCrimsonBot:
         print("Sending help message")
         help_message = ""
         for key in self.command_dict.keys():
-            help_message += command_trigger + key + " " + command_dict[key][1] + "\n"
+            help_message += self.command_trigger + key + " " + self.command_dict[key][1] + "\n"
         await message.channel.send(help_message)
         print("Sent successfully")
         return
@@ -45,7 +46,7 @@ class KingCrimsonBot:
     # Sends a random King Crimson image
     async def send_KC(self, message):
         print("Sending angery King Crimson")
-        rand = random.randint(0, num_images_in_folder('KingCrimson/'))
+        rand = random.randint(0, self.num_images_in_folder('KingCrimson/'))
         file_to_send = "KingCrimson" + str(rand) + ".png"
         print("Sending " + file_to_send)
         await message.channel.send(
@@ -57,7 +58,7 @@ class KingCrimsonBot:
     # Sends a thinking gif
     async def send_thunk(self, message):
         print("Sending thonking image")
-        rand = random.randint(0, num_images_in_folder('hmm/'))
+        rand = random.randint(0, self.num_images_in_folder('hmm/'))
         file_to_send = str(rand) + ".gif"
         print("Sending " + file_to_send)
         await message.channel.send(file=discord.File(self.resources_folder + "hmm/" + file_to_send))
