@@ -41,7 +41,7 @@ class KingCrimsonBot:
 
     # Current maximum number of jpgs and pngs in a resource folder
     def num_images_in_folder(self, foldername):
-        return len(listdir(resources_folder + foldername)) - 1
+        return len(listdir(self.resources_folder + foldername)) - 1
 
     # Sends a random King Crimson image
     async def send_KC(self, message):
@@ -50,7 +50,7 @@ class KingCrimsonBot:
         file_to_send = "KingCrimson" + str(rand) + ".png"
         print("Sending " + file_to_send)
         await message.channel.send(
-            file=discord.File(resources_folder + "KingCrimson/" + file_to_send)
+            file=discord.File(self.resources_folder + "KingCrimson/" + file_to_send)
         )
         print("Sent successfully")
         return
