@@ -15,6 +15,7 @@ class KingCrimsonBot:
         self.monitored_channels = []
         self.voice_client = None
         self.SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
+        self.spotipy_obj = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
         self.command_dict = { #Dictionary of all commands
             "help": (self.send_help, "- Outputs a list of commands"),
             "angerykc": (self.send_KC, "- Responds with an angery King Crimson"),
@@ -31,7 +32,7 @@ class KingCrimsonBot:
     async def send_help(self, message):
         print("Sending help message")
         help_message = ""
-        for key in command_dict.keys():
+        for key in self.command_dict.keys():
             help_message += command_trigger + key + " " + command_dict[key][1] + "\n"
         await message.channel.send(help_message)
         print("Sent successfully")
@@ -70,7 +71,7 @@ class KingCrimsonBot:
             self.monitored_channels.remove(channel)
             print("Disarmed " + channel.name + " successfully")
         elif monitored is True:
-            await delete_message(message)
+            await self.delete_message(message)
             await channel.send(
                 "I erased the time in which "
                 + message.author.mention
@@ -94,8 +95,8 @@ class KingCrimsonBot:
         return
 
     def prime_ability(self, message):
-        monitor_channel(message.channel)
-        delete_message(message)
+        self.monitor_channel(message.channel)
+        self.delete_message(message)
         return
 
     def monitor_channel(self, channel):
@@ -121,30 +122,29 @@ class KingCrimsonBot:
             return False
 
     async def play_song(self, message):
-        if await summon(message): # Connected to voice channel properly
+        if await self.summon(message): # Connected to voice channel properly
             try:
                 audio_source = discord.FFmpegPCMAudio(source='./resources/mp3s/HeheBoi.mp3', pipe=True)
                 self.voice_client.play(audio_source, after=lambda x: print('Played audio.'))
                 playing_for = 0
-                while(voice_client.is_playing()):
+                while(self.voice_client.is_playing()):
                     playing_for += 1
                     # wait until end of audio
-                await banish(message)
+                await self.banish(message)
             except:
                     print('Error playing audio file')
-                    await banish(message)
+                    await self.banish(message)
                     await message.channel.send('Error playing audio file')
                     raise
 
     async def play_list(self, message):
-        playlist = get_songs_from_playlist(message.content[12:])
+        playlist = self.get_songs_from_playlist(message.content[12:])
         for song in playlist:
-            await play_song(message, song)
+            await self.play_song(message, song)
 
     async def print_user_playlist_names(self, message):
-        client_credentials_manager = SpotifyClientCredentials()
-        sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-        playlists = sp.user_playlists(SPOTIFYUSERNAME)
+        client_credentials_manager =
+        playlists = self.spotipy_obj.user_playlists(SPOTIFYUSERNAME)
         playlistnames = ''
         for list in playlists['items']:
             playlistnames += list['name'] + '\n'
@@ -153,14 +153,12 @@ class KingCrimsonBot:
     def get_songs_from_playlist(self, to_search):
         """Return a list of songs and their artists from a Spotify Playlist."""
         print(tosearch)
-        client_credentials_manager = SpotifyClientCredentials()
-        sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-        playlists = sp.user_playlists(SPOTIFYUSERNAME)
+        playlists = self.spotipy_obj.user_playlists(SPOTIFYUSERNAME)
         song_list = []
         for list in playlists['items']:
             if tosearch in list['name'].lower():
                 if tosearch in list['name'].lower():
-                    tracks = sp.playlist_tracks(playlist_id=list['id'], fields='items.track.name,items.track.artists')
+                    tracks = self.spotipy_obj.playlist_tracks(playlist_id=list['id'], fields='items.track.name,items.track.artists')
                     for track in tracks['items']:
                         track = track['track']
                         song_list.append(str(track['name']) + ' - ' + str(track['artists'][0]['name']))
