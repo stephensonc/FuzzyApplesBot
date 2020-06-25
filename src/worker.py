@@ -1,14 +1,15 @@
 import discord
 import asyncio
 import random
-import commands
+import KingCrimsonBot
 import os
 
 client = discord.Client()
-
-command_dict = commands.command_dict
-command_trigger = commands.command_trigger
-
+command_trigger = '!'
+bot = KingCrimsonBot(client=client, resources_folder='./resources/', command_trigger=command_trigger, help_file=open("HelpMessage.txt", "r"))
+command_dict = bot.get_commands()
+if not discord.opus.is_loaded():
+    discord.opus.load_opus('opus')
 
 @client.event
 async def on_ready():
@@ -32,11 +33,11 @@ async def on_message(message):
 
     # if the text should be parsed for a command
     if content.startswith(command_trigger):
-        print("Command received")
         command_found = False
         for key in command_dict.keys():
             if key in content:
-                await commands.command_dict[key][0](message)
+                print(key + ' command received.')
+                await bot.command_dict[key][0](message)
                 command_found = True
         # Invalid message
         # if command_found is False:
@@ -47,7 +48,7 @@ async def on_message(message):
 
 
 def print_monitored():
-    for chnl in commands.monitoredChannels:
+    for chnl in bot.monitored_channels:
         print(chnl.name + ", ")
     return
 
