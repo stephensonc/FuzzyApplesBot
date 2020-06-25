@@ -16,14 +16,14 @@ class KingCrimsonBot:
         self.voice_client = None
         self.SPOTIFYUSERNAME = os.environ['SPOTIFYUSERNAME']
         self.command_dict = { #Dictionary of all commands
-            "help": (send_help, "- Outputs a list of commands"),
-            "angerykc": (send_KC, "- Responds with an angery King Crimson"),
-            "thonking": (send_thunk, "- Responds with a random thinking image"),
-            "kcplay": (play_song, "- Joins voice channel and plays specified song"),
-            "kcplaylist": (play_list, "- Joins voice channel and plays a list of songs"),
-            "testspotify": (print_user_playlist_names, "- Attempts to connect to spotify"),
-            "summonkc": (summon, "- Attempts to join the user's voice channel"),
-            "banishkc": (banish, "- Leaves a voice channel, if it is in one")
+            "help": (self.send_help, "- Outputs a list of commands"),
+            "angerykc": (self.send_KC, "- Responds with an angery King Crimson"),
+            "thonking": (self.send_thunk, "- Responds with a random thinking image"),
+            "kcplay": (self.play_song, "- Joins voice channel and plays specified song"),
+            "kcplaylist": (self.play_list, "- Joins voice channel and plays a list of songs"),
+            "testspotify": (self.print_user_playlist_names, "- Attempts to connect to spotify"),
+            "summonkc": (self.summon, "- Attempts to join the user's voice channel"),
+            "banishkc": (self.banish, "- Leaves a voice channel, if it is in one")
             # "erase": (commands.prime_ability, "- Activates King Crimson's ability")
         }
 
