@@ -144,7 +144,7 @@ class KingCrimsonBot:
             await self.play_song(message, song)
 
     async def print_user_playlist_names(self, message):
-        playlists = self.spotipy_obj.user_playlists(SPOTIFYUSERNAME)
+        playlists = self.spotipy_obj.user_playlists(self.SPOTIFYUSERNAME)
         playlistnames = ''
         for list in playlists['items']:
             playlistnames += list['name'] + '\n'
@@ -153,7 +153,7 @@ class KingCrimsonBot:
     def get_songs_from_playlist(self, to_search):
         """Return a list of songs and their artists from a Spotify Playlist."""
         print(tosearch)
-        playlists = self.spotipy_obj.user_playlists(SPOTIFYUSERNAME)
+        playlists = self.spotipy_obj.user_playlists(self.SPOTIFYUSERNAME)
         song_list = []
         for list in playlists['items']:
             if tosearch in list['name'].lower():
