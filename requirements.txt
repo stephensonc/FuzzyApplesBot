@@ -1,4 +1,4 @@
-discord.py[voice]==1.2.5
+discord.py[voice]
 ffmpeg-python
 PyNaCl
 opuslib
